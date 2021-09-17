@@ -7,15 +7,16 @@ import { IonicModule } from '@ionic/angular';
 import { DashboardPageRoutingModule } from './dashboard-routing.module';
 
 import { DashboardPage } from './dashboard.page';
-import { HeaderComponent } from 'src/app/components/header/header.component';
+import { componentModule } from '../../components/components.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    DashboardPageRoutingModule
+    DashboardPageRoutingModule,
+    componentModule
   ],
-  declarations: [DashboardPage, HeaderComponent]
+  declarations: [DashboardPage]
 })
-export class DashboardPageModule {}
+export class DashboardPageModule { }
