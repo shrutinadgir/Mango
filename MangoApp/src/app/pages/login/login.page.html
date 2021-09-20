@@ -1,0 +1,33 @@
+<ion-content>
+
+  <ion-grid class="main-grid login">
+    <ion-row class="ion-align-items-center">
+      <ion-col size-xs='12' size-sm='7' size-md="7" size-lg="7">
+        <img class="login-img" src="/assets/images/emp-lap2.jpg" />
+      </ion-col>
+      <ion-col size-xs='12' size-sm='5' size-md="5" size-lg="5">
+        <div class="form-design">
+          <ion-button style="margin-bottom: 18px;" expand="block" shape="round" class="btn">Log in Via SSO</ion-button>
+          <h2>Or</h2>
+          <span>
+            Login with Email
+          </span>
+          <ion-item lines='none' class="form-inputs ion-no-padding">
+            <ion-label position="stacked">Email Id</ion-label>
+            <ion-input type='email' [(ngModel)]='formData.email'></ion-input>
+          </ion-item>
+
+          <ion-item lines='none' class="form-inputs ion-no-padding">
+            <ion-label position="stacked">Password</ion-label>
+            <ion-input type='password' [(ngModel)]='formData.password'></ion-input>
+          </ion-item>
+          <ion-button expand="block" shape="round" class="log-btn" [routerLink]="['/home']" (click)='login()'>Log in
+          </ion-button>
+          <ion-item lines='none' class="forget-pass">
+            <ion-label slot="end">Forget Password?</ion-label>
+          </ion-item>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
