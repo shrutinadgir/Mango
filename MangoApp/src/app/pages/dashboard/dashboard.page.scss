@@ -54,14 +54,8 @@ ion-content {
     color: #083A81;
     opacity: 1;
   }
+  .hov-label :hover {
+    cursor: pointer;
+  }
 }
 
-.tab-left-title {
-  font: var(--unnamed-font-style-normal) normal 600 26px/var(--unnamed-line-spacing-12) var(--unnamed-font-family-montserrat);
-  color: var(--unnamed-color-083a81);
-  text-align: left;
-  font: normal normal 600 26px/12px Montserrat;
-  letter-spacing: 1px;
-  color: #083A81;
-  opacity: 1;
-}

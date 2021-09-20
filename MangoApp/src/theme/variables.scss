@@ -239,3 +239,19 @@
 ion-header{
   position: static !important 
 }
+
+.mango-alert-modal {
+  position: fixed;
+  overflow: hidden;
+  .modal-wrapper {
+    width: 50%;
+    height: 50%;
+    background: transparent linear-gradient(251deg, #E4E7F6 0%, #E0EAF6 52%, #C3D9F6 100%) 0% 0% no-repeat padding-box;
+    box-shadow: 0px 16px 20px #0000001A;
+    border: 1.5px solid #FFFFFF;
+    border-radius: 40px;
+    opacity: 1;
+    backdrop-filter: blur(29px);
+    -webkit-backdrop-filter: blur(29px);
+  }
+}

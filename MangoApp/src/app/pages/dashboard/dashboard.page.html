@@ -6,8 +6,8 @@
   <app-side-nav (_selectedTab)="sideNavSelectedTab($event)"></app-side-nav>
   <ion-grid class="sidenav-header-container">
     <ion-row>
-      <ion-col class="ion-align-self-start" size-xs='12' size-sm='6' size-md="4" size-lg="5">
-        <ion-label class="tab-left-title">{{selectedTabTitle}}</ion-label>
+      <ion-col class="ion-align-self-start" size-xs='12' size-sm='6' size-md="4" size-lg="5" class="hov-label">
+        <ion-label class="tab-left-title" (click)="openAlertModal()">{{selectedTabTitle}}</ion-label>
       </ion-col>
       <ion-col size-xs='12' size-sm='6' size-md="8" size-lg="7" *ngIf="selectedTabTitle == 'DashBoard'">
         <!-- <ion-buttons slot="secondary"> -->

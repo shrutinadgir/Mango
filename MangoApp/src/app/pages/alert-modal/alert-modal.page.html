@@ -1,0 +1,11 @@
+<ion-content>
+  <div class="close-icon" (click)="close()">
+    <ion-icon name="close-circle-outline"></ion-icon>
+  </div>
+  <div class="title" *ngIf="alertContent">
+    <span>{{alertContent}}</span>
+  </div>
+  <div class="button-container">
+    <button (click)="confirm()">Confirm</button>
+  </div>
+</ion-content>
