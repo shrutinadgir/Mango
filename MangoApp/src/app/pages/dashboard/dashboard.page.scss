@@ -19,8 +19,9 @@ ion-content {
     opacity: 1;
     backdrop-filter: blur(13px);
     -webkit-backdrop-filter: blur(13px);
+    
     .dash-cont-title {
-      font: var(--unnamed-font-style-normal) normal 600 16px/var(--unnamed-line-spacing-12) var(--unnamed-font-family-montserrat);
+      //font: var(--unnamed-font-style-normal) normal 600 16px/var(--unnamed-line-spacing-12) var(--unnamed-font-family-montserrat);
       text-align: left;
       font: normal normal 600 16px/12px Montserrat;
       letter-spacing: 1.6px;
@@ -60,10 +61,10 @@ ion-content {
 }
 
 .tab-left-title {
-  font: var(--unnamed-font-style-normal) normal 600 26px/var(--unnamed-line-spacing-12) var(--unnamed-font-family-montserrat);
+  //font: var(--unnamed-font-style-normal) normal 600 26px/var(--unnamed-line-spacing-12) var(--unnamed-font-family-montserrat);
   color: var(--unnamed-color-083a81);
   text-align: left;
-  font: normal normal 600 26px/12px Montserrat;
+  //font: normal normal 600 26px/12px Montserrat;
   letter-spacing: 1px;
   color: #083A81;
   opacity: 1;
@@ -77,7 +78,7 @@ ion-content {
 
 .tab-right-icon{
 color:black;
-font-family: monospace;
+//font-family: monospace;
 }
 
 .header {
@@ -107,6 +108,37 @@ font-family: monospace;
 }
 .hov-label:hover{
   cursor: pointer;
+}
+.view {
+  margin: auto;
+  //width: 600px;
+}
+
+.wrapper {
+  position: relative;
+  overflow: auto;
+  //border: 1px solid #d0e1f6;
+  white-space: nowrap;
+}
+
+.sticky-col {
+  position: -webkit-sticky;
+  position: sticky;
+  background-color:#d0e1f6;
+}
+
+.first-col {
+  width: 100px;
+  min-width: 100px;
+  max-width: 140px;
+  left: 0px;
+}
+
+th{
+  padding: 15px;
+}
+td{
+  padding: 10px;
 }
 
 
