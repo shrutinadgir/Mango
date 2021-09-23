@@ -19,7 +19,8 @@
         </ion-button>
       </ion-buttons>
     </div>
-    <ion-card style="width: 95%;height: 340px;margin-top:3%;border-radius: 15px;">
+    <ion-card style="width: 95%;height: 340px;margin-top:3%;border-radius: 15px;"
+      *ngIf="selectedTabTitle == 'DashBoard'">
       <ion-card-header>
         <ion-card-subtitle class="dash-cont-title">Project Status Tracker
           <span class="con-icons">
@@ -49,19 +50,19 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td class="sticky-col first-col"> PRJ20214555-001</td>
-                <td>Ham</td>
-                <td>Micro</td>
-                <td>Kumar</td>
-                <td>Microspace</td>
-                <td>Ham</td>
-                <td>Micro</td>
-                <td>Kumar</td>
-                <td>Microspace</td>
-                <td>Micro</td>
-                <td>Kumar</td>
-                <td>Microspace</td>
+              <tr *ngFor="let project of projectLists">
+                <td class="sticky-col first-col"> {{project.project_id}}</td>
+                <td>{{project.customer_name}}</td>
+                <td>{{project.Account_name}}</td>
+                <td>{{project.Project_managers_name}}</td>
+                <td>{{project.Start_dt | date : 'shortDate'}}</td>
+                <td>{{project.End_dt | date : 'shortDate'}}</td>
+                <td>{{project.Num_machines}}</td>
+                <td>{{project.Region}}</td>
+                <td>{{project.Time_hours}}</td>
+                <td>{{project.Revenue_dollars}}</td>
+                <td>{{project.Cost_dollars}}</td>
+                <td>{{project.status}}</td>
               </tr>
             </tbody>
           </table>
