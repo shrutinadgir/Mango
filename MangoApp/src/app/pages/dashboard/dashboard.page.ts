@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { AlertModalPage } from '../alert-modal/alert-modal.page';
+import { BackendCallService } from 'src/app/services/backend-call/backend-call.service';
+import { LoadingController } from '@ionic/angular';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,9 +12,11 @@ import { AlertModalPage } from '../alert-modal/alert-modal.page';
 export class DashboardPage implements OnInit {
   selectedTabTitle: string = 'DashBoard';
 
-  constructor(public modalController: ModalController) { }
+  constructor(public modalController: ModalController, public backendService: BackendCallService,
+    public loadingController: LoadingController) { }
 
   ngOnInit() {
+    this.getProjects();
   }
 
   sideNavSelectedTab(tab) {
@@ -35,6 +39,14 @@ export class DashboardPage implements OnInit {
       }
     });
     return await modal.present();
+  }
+
+  async getProjects() {
+    this.backendService.getProjectLists().then(async data => {
+      console.log("getting project lists data:", data);
+    }).catch(err => {
+      console.log("getting error for fetching projects lists:", err);
+    })
   }
 
 }
