@@ -15,7 +15,8 @@ ion-content {
         width: auto;
         height: 100%;
         text-align: center;
-        font: normal normal 600 20px/42px Montserrat;
+        font-family: Montserrat;
+        font-weight: 600;
         letter-spacing: 0.5px;
         color: #083A81;
         opacity: 1;
@@ -29,6 +30,8 @@ ion-content {
         bottom: 10%;
         right: 6%;
         button {
+            font-family: Montserrat;
+            font-weight: 600;
             background: transparent linear-gradient(248deg, #00A4E0 0%, var(--unnamed-color-083a81) 100%) 0% 0% no-repeat padding-box;
             background: transparent linear-gradient(248deg, #00A4E0 0%, #083A81 100%) 0% 0% no-repeat padding-box;
             border-radius: 15px;
@@ -37,6 +40,8 @@ ion-content {
             width: 140px;
             height: 44px;
             margin-left: 10px;
+            font-size: 14px;
+            letter-spacing: 0px;
         }
     }
 }

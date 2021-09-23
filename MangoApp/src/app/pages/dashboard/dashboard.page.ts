@@ -11,6 +11,7 @@ import { LoadingController } from '@ionic/angular';
 })
 export class DashboardPage implements OnInit {
   selectedTabTitle: string = 'DashBoard';
+  projectLists: Array<[]> = [];
 
   constructor(public modalController: ModalController, public backendService: BackendCallService,
     public loadingController: LoadingController) { }
@@ -41,9 +42,11 @@ export class DashboardPage implements OnInit {
     return await modal.present();
   }
 
-  async getProjects() {
-    this.backendService.getProjectLists().then(async data => {
+  getProjects() {
+    const _self = this;
+    _self.backendService.getProjectLists().then(data => {
       console.log("getting project lists data:", data);
+      if (data && data.projects.length) _self.projectLists = data.projects;
     }).catch(err => {
       console.log("getting error for fetching projects lists:", err);
     })

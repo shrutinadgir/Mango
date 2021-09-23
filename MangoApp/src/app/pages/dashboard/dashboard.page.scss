@@ -89,7 +89,15 @@ ion-card {
 .title {
   overflow: hidden;
   position: relative;
-  margin-left: 115px;
+  margin-left:115px;
+  ion-title {
+    font-family: Montserrat-Medium !important;
+    font-weight: 600;
+    text-align: left;
+    letter-spacing: 0px;
+    color: #083A81;
+    opacity: 1;
+  }
 }
 
 .heading {
@@ -103,7 +111,6 @@ ion-card {
 }
 .hov-label:hover {
   cursor: pointer;
-  font-family: Montserrat !important;
 }
 .view {
   margin: auto;
