@@ -1,7 +1,8 @@
 {
   "name": "MangoApp",
   "integrations": {
-    "capacitor": {}
+    "capacitor": {},
+    "cordova": {}
   },
   "type": "angular"
 }
