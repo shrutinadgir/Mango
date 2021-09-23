@@ -1,9 +1,8 @@
 ion-content {
-    --ion-background-color: transparent
-      linear-gradient(251deg, #dfe3fa 0%, #e0eaf6 52%, #c3d9f6 100%) 0% 0%
-      no-repeat padding-box;
-      backdrop-filter: blur(3px);
-}  
+  --ion-background-color: transparent linear-gradient(251deg, #dfe3fa 0%, #e0eaf6 52%, #c3d9f6 100%) 0% 0% no-repeat
+    padding-box;
+  backdrop-filter: blur(3px);
+}
 
 .content-container {
   position: relative;
@@ -11,76 +10,70 @@ ion-content {
   top: 16%;
   width: 89.8%;
   height: auto;
-    ion-card {
-    background: #FFFFFF 0% 0% no-repeat padding-box;
-    box-shadow: 0px 8px 16px #0000002C;
-    border: 1px solid #FFFFFF;
-    border-radius: 20px;
-    opacity: 1;
-    backdrop-filter: blur(13px);
-    -webkit-backdrop-filter: blur(13px);
-    
-    .dash-cont-title {
-      //font: var(--unnamed-font-style-normal) normal 600 16px/var(--unnamed-line-spacing-12) var(--unnamed-font-family-montserrat);
-      text-align: left;
-    font-family: Montserrat !important;
-     // font: normal normal 600 16px/12px Montserrat;
-      letter-spacing: 1.6px;
-      color: #000000;
-      opacity: 1;
-      .con-icons {
-        float:right;
-        .con-icons-align {
-          margin-right: 10px;
-        }
-        .con-icons-align:hover {
-          cursor: pointer;
-        }
-      }
-    }
-  }
 }
-.sidenav-header-container {
-  position: relative;
-  left: 8%;
-  // top: 5%;
-  width: 100%;
-  height: 32px;
-  //display: inline-block;
-  .tab-left-title {
-    font: var(--unnamed-font-style-normal) normal 600 26px/var(--unnamed-line-spacing-12) var(--unnamed-font-family-montserrat);
-    color: var(--unnamed-color-083a81);
-    text-align: left;
-    font: normal normal 600 26px/12px Montserrat;
-    letter-spacing: 1px;
-    color: #083A81;
-    opacity: 1;
+ion-card {
+  background: #e0eaf6 0% 0% no-repeat padding-box;
+  box-shadow: 0px 8px 16px #0000002c;
+  border: 1px solid #ffffff;
+  border-radius: 20px;
+  opacity: 1;
+  backdrop-filter: blur(13px);
+  -webkit-backdrop-filter: blur(13px);
+  height: 350px;
+  margin-top: 2%;
+  opacity: 1;
+  backdrop-filter: blur(13px);
+  -webkit-backdrop-filter: blur(13px);
+}
+
+.dash-cont-title {
+  text-align: left;
+  font-family: Montserrat !important;
+  letter-spacing: 1.6px;
+  color: #000000;
+  opacity: 1;
+  font-weight: bold;
+  font-size: 16px;
+  font-weight: 600;
+}
+.con-icons {
+  float: right;
+  .con-icons-align {
+    margin-right: 10px;
   }
-  .hov-label :hover {
+  .con-icons-align:hover {
     cursor: pointer;
   }
 }
 
+.sidenav-header-container {
+  position: relative;
+  left: 8%;
+  width: 100%;
+  height: 32px;
+}
+.hov-label :hover {
+  cursor: pointer;
+}
 .tab-left-title {
-  //font: var(--unnamed-font-style-normal) normal 600 26px/var(--unnamed-line-spacing-12) var(--unnamed-font-family-montserrat);
   color: var(--unnamed-color-083a81);
   text-align: left;
-  //font: normal normal 600 26px/12px Montserrat;
+  font: normal normal 600 26px/12px Montserrat;
   letter-spacing: 1px;
-  color: #083A81;
+  color: #083a81;
   opacity: 1;
 }
 
-.tab-right-text{
+.tab-right-text {
   color: black;
   font-size: 11px;
   font-weight: bolder;
   font-family: Montserrat !important;
 }
 
-.tab-right-icon{
-color:black;
-//font-family: monospace;
+.tab-right-icon {
+  color: black;
+  font-family: Montserrat;
 }
 
 .header {
@@ -93,57 +86,66 @@ color:black;
   margin-top: -30px;
 }
 
-.title{
+.title {
   overflow: hidden;
   position: relative;
-  margin-left:115px
+  margin-left: 115px;
 }
 
-.heading{
-  color: #083A81;
+.heading {
+  color: #083a81;
 }
 
-.dash-title{
+.dash-title {
   float: right;
   margin-top: -30px;
   margin-right: 4%;
 }
-.hov-label:hover{
+.hov-label:hover {
   cursor: pointer;
   font-family: Montserrat !important;
 }
 .view {
   margin: auto;
-  //width: 600px;
 }
 
 .wrapper {
   position: relative;
-  overflow: auto;
-  //border: 1px solid #d0e1f6;
   white-space: nowrap;
+  overflow-x: scroll;
+  overflow-y: scroll;
 }
 
+.wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.wrapper {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
 .sticky-col {
   position: -webkit-sticky;
   position: sticky;
-  background-color:#d0e1f6;
+  background-color: #e0eaf6;
 }
-
 .first-col {
   width: 100px;
   min-width: 100px;
   max-width: 140px;
   left: 0px;
 }
-
-th{
-  padding: 15px;
+th {
+  padding: 12px;
+  font-family: montserrat;
+  font-weight: 600;
+  color: #454b57;
+  font-size: 13px;
+  font-family: montserrat;
+  text-align: left;
+  letter-spacing: 0px;
 }
-td{
+td {
   padding: 10px;
 }
-
-
-
-
