@@ -3,8 +3,7 @@
     <ion-row class="row-container">
       <ion-col col-12 (click)="changeSideNav(0)">
         <div class="icon">
-          <ion-icon name="albums-outline" size="small" [ngClass]="{'selected-list':selectedData == 'dash'}">
-          </ion-icon>
+          <img src="../../../assets/icon/dashboard.svg" [ngClass]="{'selected-list':selectedData == 'dash'}">
         </div>
         <ion-label [ngClass]="selectedData == 'dash' ? 'selected-title' : 'title'">
           <span class="dash-alignment">Dashboard</span>
@@ -15,7 +14,7 @@
     <ion-row class="row-container">
       <ion-col col-12>
         <div class="icon" (click)="changeSideNav(1)">
-          <ion-icon name="cog-outline" size="small" [ngClass]="{'selected-list':selectedData == 'pm'}"></ion-icon>
+          <img src="../../../assets/icon/Management for menu.svg" [ngClass]="{'selected-list':selectedData == 'pm'}">
           <ion-label [ngClass]="selectedData == 'pm' ? 'selected-title' : 'title'"><span
               class="sub-title">Project</span> <br /><span class="sub-title-inner">Management</span></ion-label>
         </div>
@@ -25,7 +24,7 @@
     <ion-row class="row-container">
       <ion-col col-12>
         <div class="icon" (click)="changeSideNav(2)">
-          <ion-icon name="gift-outline" size="small" [ngClass]="{'selected-list':selectedData == 'ofm'}"></ion-icon>
+          <img src="../../../assets/icon/icon-offer.svg" [ngClass]="{'selected-list':selectedData == 'ofm'}">
           <ion-label [ngClass]="selectedData == 'ofm' ? 'selected-title' : 'title'"><span
               class="sub-title alignment">Offer</span> <br /><span class="sub-title-inner">Management</span></ion-label>
         </div>
@@ -35,7 +34,7 @@
     <ion-row class="row-container">
       <ion-col col-12>
         <div class="icon" (click)="changeSideNav(3)">
-          <ion-icon name="fast-food-outline" size="small" [ngClass]="{'selected-list':selectedData == 'om'}"></ion-icon>
+          <img src="../../../assets/icon/Order Management.svg" [ngClass]="{'selected-list':selectedData == 'om'}">
           <ion-label [ngClass]="selectedData == 'om' ? 'selected-title' : 'title'"><span
               class="sub-title alignment">Order</span> <br /><span class="sub-title-inner">Management</span></ion-label>
         </div>
@@ -45,8 +44,8 @@
     <ion-row class="row-container">
       <ion-col col-12>
         <div class="icon" (click)="changeSideNav(4)">
-          <ion-icon name="person-circle-outline" size="small" [ngClass]="{'selected-list':selectedData == 'um'}">
-          </ion-icon>
+          <img src="../../../assets/icon/User Console Management.svg"
+            [ngClass]="{'selected-list':selectedData == 'um'}">
           <ion-label [ngClass]="selectedData == 'um' ? 'selected-title' : 'title'"><span
               class="sub-title extra-alignment">User Management</span> <br /><span
               class="sub-title-inner inner-alignment">Console</span>
@@ -58,7 +57,7 @@
     <ion-row class="row-container">
       <ion-col col-12 (click)="changeSideNav(5)">
         <div class="icon">
-          <ion-icon name="library-outline" size="small" [ngClass]="{'selected-list':selectedData == 'lm'}"></ion-icon>
+          <img src="../../../assets/icon/Library.svg" [ngClass]="{'selected-list':selectedData == 'lm'}">
           <ion-label [ngClass]="selectedData == 'lm' ? 'selected-title' : 'title'"><span
               class="sub-title">Library</span> <br /><span class="sub-title-inner">Management</span></ion-label>
         </div>
