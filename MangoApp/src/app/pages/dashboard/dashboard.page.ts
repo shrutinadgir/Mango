@@ -3,6 +3,7 @@ import { ModalController } from '@ionic/angular';
 import { AlertModalPage } from '../alert-modal/alert-modal.page';
 import { BackendCallService } from 'src/app/services/backend-call/backend-call.service';
 import { LoadingController } from '@ionic/angular';
+import { isNotEmptyArray } from 'src/app/utilities/utils';
 
 @Component({
   selector: 'app-dashboard',
@@ -46,7 +47,7 @@ export class DashboardPage implements OnInit {
     const _self = this;
     _self.backendService.getProjectLists().then(data => {
       console.log("getting project lists data:", data);
-      if (data && data.projects.length) _self.projectLists = data.projects;
+      if (data && isNotEmptyArray(data.projects)) _self.projectLists = data.projects;
     }).catch(err => {
       console.log("getting error for fetching projects lists:", err);
     })
