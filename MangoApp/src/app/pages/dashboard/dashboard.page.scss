@@ -4,13 +4,6 @@ ion-content {
   backdrop-filter: blur(3px);
 }
 
-.content-container {
-  position: relative;
-  left: 8%;
-  top: 16%;
-  width: 89.8%;
-  height: auto;
-}
 ion-card {
   background: #e0eaf6 0% 0% no-repeat padding-box;
   box-shadow: 0px 8px 16px #0000002c;
@@ -46,22 +39,8 @@ ion-card {
   }
 }
 
-.sidenav-header-container {
-  position: relative;
-  left: 8%;
-  width: 100%;
-  height: 32px;
-}
 .hov-label :hover {
   cursor: pointer;
-}
-.tab-left-title {
-  color: var(--unnamed-color-083a81);
-  text-align: left;
-  font: normal normal 600 26px/12px Montserrat;
-  letter-spacing: 1px;
-  color: #083a81;
-  opacity: 1;
 }
 
 .tab-right-text {
@@ -76,11 +55,6 @@ ion-card {
   font-family: Montserrat;
 }
 
-.header {
-  overflow: hidden;
-  padding: 20px 10px;
-}
-
 .header-right {
   float: right;
   margin-top: -30px;
@@ -91,17 +65,13 @@ ion-card {
   position: relative;
   margin-left:115px;
   ion-title {
-    font-family: Montserrat-Medium !important;
+    font-family: Montserrat!important;
     font-weight: 600;
     text-align: left;
     letter-spacing: 0px;
     color: #083A81;
     opacity: 1;
   }
-}
-
-.heading {
-  color: #083a81;
 }
 
 .dash-title {
@@ -146,9 +116,9 @@ ion-card {
 th {
   padding: 12px;
   font-family: montserrat;
-  font-weight: 600;
+  font-weight: bold;
   color: #454b57;
-  font-size: 13px;
+  font-size: 12px;
   font-family: montserrat;
   text-align: left;
   letter-spacing: 0px;

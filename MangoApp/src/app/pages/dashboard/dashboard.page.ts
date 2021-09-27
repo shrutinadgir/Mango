@@ -46,10 +46,23 @@ export class DashboardPage implements OnInit {
     const _self = this;
     _self.backendService.getProjectLists().then(data => {
       console.log("getting project lists data:", data);
-      if (data && data.projects.length) _self.projectLists = data.projects;
+      if (data && data.projects.length) {
+        _self.projectLists = data.projects;
+        if (_self.projectLists.length) {
+          _self.projectLists.forEach(_p => {
+            if (_p['Cost_dollars']) _p['Cost_dollars'] = _self.convertStringToNum(_p['Cost_dollars']);
+            if (_p['Revenue_dollars']) _p['Revenue_dollars'] = _self.convertStringToNum(_p['Revenue_dollars']);
+            if (_p['Time_hours']) _p['Time_hours'] = _self.convertStringToNum(_p['Time_hours']);
+          });
+        }
+      }
     }).catch(err => {
       console.log("getting error for fetching projects lists:", err);
     })
+  }
+  convertStringToNum(value) {
+    let num = value.split("%");
+    return Number(num[0])
   }
 
 }
