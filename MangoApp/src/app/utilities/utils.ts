@@ -35,3 +35,9 @@ export function isNotBlank(value: string): boolean {
 export function isBlank(value: string): boolean {
     return (!value || trim(value) == '');
 }
+
+export function toNumber(value) {
+    let result = Number(value);
+    if (isNaN(result)) { return 0; }
+    return result;
+}
