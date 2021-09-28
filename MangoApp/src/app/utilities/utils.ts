@@ -41,3 +41,35 @@ export function toNumber(value) {
     if (isNaN(result)) { return 0; }
     return result;
 }
+
+export function doubleDecimal(value: Number) {
+    return toNumber(value.toFixed(2));
+}
+
+export function isNotNullAndUndefined(value) {
+    return value != null && value != undefined;
+}
+
+export function addUniqueEntries(array: any[], array2: any[]) {
+    if (isNotEmptyArray(array2)) {
+        array2.forEach(_d => {
+            addUniqueEntry(array, _d);
+        });
+    }
+    return array;
+}
+
+export function addUniqueEntry(array: any[], data: any) {
+    if (data && data.id && Array.isArray(array)) {
+        let index = array.findIndex(a => (a && a.id == data.id));
+        if (index == -1) {
+            array.push(data);
+        } else { array[index] = data }
+    } else if (data && typeof data != 'object' && Array.isArray(array)) {
+        let index = array.indexOf(data);
+        if (index == -1) {
+            array.push(data);
+        } else { array[index] = data }
+    }
+    return array;
+}
