@@ -3,7 +3,7 @@ import { ModalController } from '@ionic/angular';
 import { AlertModalPage } from '../alert-modal/alert-modal.page';
 import { BackendCallService } from 'src/app/services/backend-call/backend-call.service';
 import { LoadingController } from '@ionic/angular';
-import { isNotEmptyArray } from 'src/app/utilities/utils';
+import { isNotEmptyArray, toNumber } from 'src/app/utilities/utils';
 
 @Component({
   selector: 'app-dashboard',
@@ -46,25 +46,22 @@ export class DashboardPage implements OnInit {
   getProjects() {
     const _self = this;
     _self.backendService.getProjectLists().then(data => {
-      console.log("getting project lists data:", data);
-      if (data && data.projects.length) {
-        _self.projectLists = data.projects;
-        if (_self.projectLists.length) {
-          _self.projectLists.forEach(_p => {
-            if (_p['Cost_dollars']) _p['Cost_dollars'] = _self.convertStringToNum(_p['Cost_dollars']);
-            if (_p['Revenue_dollars']) _p['Revenue_dollars'] = _self.convertStringToNum(_p['Revenue_dollars']);
-            if (_p['Time_hours']) _p['Time_hours'] = _self.convertStringToNum(_p['Time_hours']);
-          });
-        }
+      const { projects } = data;
+      if (isNotEmptyArray(projects)) {
+        projects.forEach(_p => {
+          if (isNaN(_p.Cost_dollars)) _p.Cost_dollars = _self.convertStringToNum(_p.Cost_dollars);
+          if (isNaN(_p.Revenue_dollars)) _p.Revenue_dollars = _self.convertStringToNum(_p.Revenue_dollars);
+          if (isNaN(_p.Time_hours)) _p.Time_hours = _self.convertStringToNum(_p.Time_hours);
+        });
+        return _self.projectLists = projects;
       }
-      if (data && isNotEmptyArray(data.projects)) _self.projectLists = data.projects;
     }).catch(err => {
       console.log("getting error for fetching projects lists:", err);
     })
   }
   convertStringToNum(value) {
     let num = value.split("%");
-    return Number(num[0])
+    return toNumber(num[0]);
   }
 
 }
