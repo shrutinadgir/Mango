@@ -7,7 +7,7 @@
   border-radius: 0 50px 0 0;
   border-left: none;
   border-bottom: none;
-  background-color: #D7EBFF;
+  background-color: #d7ebff;
   opacity: 1;
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(13px);
@@ -20,12 +20,12 @@
     .title {
       font-size: 8px;
       position: relative;
-      left : 10%;
+      left: 10%;
       display: block;
-      font-family: 'Montserrat';
+      font-family: "Montserrat";
       font-weight: 600;
       letter-spacing: 0px;
-      color: #7B7B7B;
+      color: #7b7b7b;
       opacity: 1;
       height: 19px;
       .dash-alignment {
@@ -68,12 +68,13 @@
   margin-bottom: -10%;
 }
 
-.icon, .title:hover { 
+.icon,
+.title:hover {
   cursor: pointer;
 }
 
 ion-icon {
-  color: #2384C5;
+  color: #2384c5;
 }
 
 .selected-list {
@@ -82,8 +83,8 @@ ion-icon {
   left: -15%;
   width: 44px;
   height: 44px;
-  background: #E4F5F9 0% 0% no-repeat padding-box;
-  border: 1px solid #207FC69A;
+  background: #e4f5f9 0% 0% no-repeat padding-box;
+  border: 1px solid #207fc69a;
   border-radius: 11px;
   padding: 10px;
   opacity: 1;
@@ -93,12 +94,12 @@ ion-icon {
 }
 
 .selected-title {
-  color: #083A81;
+  color: #083a81;
   font-weight: 600;
   font-family: montserrat;
   font-size: 8px;
   position: relative;
-  left : 15%;
+  left: 15%;
   display: block;
   letter-spacing: 0px;
   opacity: 1;
@@ -106,7 +107,7 @@ ion-icon {
   .sub-title {
     width: auto;
     position: relative;
-    left : -20%;
+    left: -20%;
     line-height: 0.8;
     text-align: center;
   }

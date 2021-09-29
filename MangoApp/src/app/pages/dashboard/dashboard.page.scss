@@ -5,18 +5,17 @@ ion-content {
 }
 
 ion-card {
-  background: #e0eaf6 0% 0% no-repeat padding-box;
-  box-shadow: 0px 8px 16px #0000002c;
-  border: 1px solid #ffffff;
-  border-radius: 20px;
-  opacity: 1;
-  backdrop-filter: blur(13px);
-  -webkit-backdrop-filter: blur(13px);
-  height: 350px;
   margin-top: 2%;
   opacity: 1;
-  backdrop-filter: blur(13px);
-  -webkit-backdrop-filter: blur(13px);
+  width:95%;
+  // background: transparent linear-gradient(251deg, #e4e7f6 0%, #e0eaf6 52%, #c3d9f6 100%) 0% 0% no-repeat padding-box;
+  background: transparent linear-gradient(251deg, #e9f5fb, #e9f5fb , #d6ecfb) 0% 0% no-repeat padding-box;
+  height: 350px;
+  box-shadow: 0 4px 20px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(13.5px);
+  -webkit-backdrop-filter: blur(13.5px);
+  border-radius: 14px;
+  border: 1px solid white;
 }
 
 .dash-cont-title {
@@ -61,15 +60,15 @@ ion-card {
 }
 
 .title {
-  overflow: hidden;
+  // overflow: scroll;
   position: relative;
-  margin-left:115px;
+  margin-left: 115px;
   ion-title {
-    font-family: Montserrat!important;
+    font-family: Montserrat !important;
     font-weight: 600;
     text-align: left;
     letter-spacing: 0px;
-    color: #083A81;
+    color: #083a81;
     opacity: 1;
   }
 }
@@ -90,22 +89,18 @@ ion-card {
   position: relative;
   white-space: nowrap;
   overflow-x: scroll;
-  overflow-y: scroll;
 }
 
 .wrapper::-webkit-scrollbar {
-  display: none;
-}
-
-/* Hide scrollbar for IE, Edge and Firefox */
-.wrapper {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+  height: 8px; /* height of horizontal scrollbar ← You're missing this */
+  border: 1px solid #dbeefb;
+  padding: 20px;
+  //border-radius: 2px;
 }
 .sticky-col {
   position: -webkit-sticky;
   position: sticky;
-  background-color: #e0eaf6;
+  background-color: #dbeefb;
 }
 .first-col {
   width: 100px;
@@ -115,14 +110,47 @@ ion-card {
 }
 th {
   padding: 12px;
-  font-family: montserrat;
+  //font-family: montserrat;
   font-weight: bold;
-  color: #454b57;
-  font-size: 12px;
-  font-family: montserrat;
+  color: #454B57;
+  font-size: 11px;
+  font-family: montserrat !important;
   text-align: left;
   letter-spacing: 0px;
+  border-bottom: 1px solid #D8DEE0;
+  vertical-align: bottom;
 }
 td {
   padding: 10px;
+  border-bottom: 1px;
+  font-family: montserrat !important;
+  color: #606060;
+  font-size: 10px;
+  border-bottom: 1px solid #D8DEE0;
 }
+button {
+  width: 110%;
+  border: none;
+  color: black;
+  padding: 5px 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 11px;
+  border-radius: 4px;
+  background-color: #50cad0;
+}
+
+progress {
+  color: #50CAD0;
+  font-size: .6em;
+  line-height: 1.5em;
+  text-indent: .5em;
+  width: 15em;
+  height: 1.2em;
+  border: 1px solid #fff;
+  //background: #fff;
+  border-radius: 3px;
+}
+progress::-webkit-progress-bar { background: #fff; }
+progress::-webkit-progress-value { background: #50CAD0; border-radius: 4px; }
