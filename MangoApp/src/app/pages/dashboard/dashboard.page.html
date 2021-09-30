@@ -9,9 +9,9 @@
           <img src="../../../assets/images/Open Fiori.svg" class="tab-right-icon">
           <span class="tab-right-text"> Open Fiori App</span>
         </ion-button>
-        <ion-button fill="clear">
-          <img src="../../../assets/images/dashboard_customize.svg" class="tab-right-icon">
-          <span class="tab-right-text"> Dashboard Customize</span>
+        <ion-button fill="clear" (click)="openDashboardCustomization(true)">
+          <ion-icon name="build-outline" class="tab-right-icon"></ion-icon>
+          <span class="tab-right-text">Dashboard Customize</span>
         </ion-button>
         <ion-button fill="clear">
           <img src="../../../assets/images/Activities.svg" class="tab-right-icon">
@@ -35,12 +35,12 @@
             <thead>
               <tr>
                 <th class="sticky-col first-col">Project ID</th>
-                <th>Customer Name</th>
+                <th>Customer Name <img (click)='sortData(projectLists)' src="/assets/images/Sorting.svg"/></th>
                 <th>Account Name</th>
                 <th>Project<br>Manager Name</th>
                 <th>Start Date</th>
                 <th>End Date</th>
-                <th>Number<br>of Machines</th>
+                <th>Number <br>of Machines</th>
                 <th>Regions</th>
                 <th>Time(in hours)<br>Actual vs Planned</th>
                 <th>Revenue(in $)<br>Actual vs Planned</th>

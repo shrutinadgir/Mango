@@ -16,12 +16,13 @@ import {
   MsalInterceptor,
 } from '@azure/msal-angular';
 import { PublicClientApplication, InteractionType } from '@azure/msal-browser';
+import { SortingPipe } from './pipes/sorting.pipe';
 
 const isIE =
   window.navigator.userAgent.indexOf('MSIE ') > -1 ||
   window.navigator.userAgent.indexOf('Trident/') > -1;
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, SortingPipe],
   entryComponents: [],
   imports: [
     BrowserModule,
@@ -65,6 +66,7 @@ const isIE =
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     BackendCallService,
+    SortingPipe
   ],
   bootstrap: [AppComponent],
 })
