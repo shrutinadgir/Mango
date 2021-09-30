@@ -19,8 +19,7 @@
         </ion-button>
       </ion-buttons>
     </div>
-    <ion-card style="width: 95%;height: 340px;margin-top:3%;border-radius: 15px;"
-      *ngIf="selectedTabTitle == 'DashBoard'">
+    <ion-card *ngIf="selectedTabTitle == 'DashBoard'">
       <ion-card-header>
         <ion-card-subtitle class="dash-cont-title">Project Status Tracker
           <span class="con-icons">
@@ -51,7 +50,8 @@
             </thead>
             <tbody>
               <tr *ngFor="let project of projectLists">
-                <td class="sticky-col first-col"> {{project.project_id}}</td>
+                <td class="sticky-col first-col" style="color: blue; font-weight: bold;cursor: pointer">
+                  {{project.project_id}}</td>
                 <td>{{project.customer_name}}</td>
                 <td>{{project.Account_name}}</td>
                 <td>{{project.Project_managers_name}}</td>
@@ -59,12 +59,12 @@
                 <td>{{project.End_dt | date : 'shortDate'}}</td>
                 <td>{{project.Num_machines}}</td>
                 <td>{{project.Region}}</td>
-                <td><progress id="file" value={{project.Time_hours}} max="100"></progress>{{project.Time_hours}}%</td>
-                <td><progress id="file" value={{project.Revenue_dollars}}
-                    max="100"></progress>{{project.Revenue_dollars}}%</td>
-                <td><progress id="file" value={{project.Cost_dollars}} max="100"></progress>{{project.Cost_dollars}}%
+                <td><progress id="file" value={{project.Time_hours}} max="100"></progress> {{project.Time_hours}}%</td>
+                <td><progress id="file" value={{project.Revenue_dollars}} max="100"></progress>
+                  {{project.Revenue_dollars}}%</td>
+                <td><progress id="file" value={{project.Cost_dollars}} max="100"></progress> {{project.Cost_dollars}}%
                 </td>
-                <td>{{project.status}}</td>
+                <td><button>{{project.status}}</button></td>
               </tr>
             </tbody>
           </table>
