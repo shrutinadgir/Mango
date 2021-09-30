@@ -11,7 +11,7 @@ ion-card {
   // background: transparent linear-gradient(251deg, #e4e7f6 0%, #e0eaf6 52%, #c3d9f6 100%) 0% 0% no-repeat padding-box;
   background: transparent linear-gradient(251deg, #e9f5fb, #e9f5fb , #d6ecfb) 0% 0% no-repeat padding-box;
   height: 350px;
-  box-shadow: 0 4px 20px 0 rgba(31, 38, 135, 0.37);
+  //box-shadow: 0 4px 20px 0 rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(13.5px);
   -webkit-backdrop-filter: blur(13.5px);
   border-radius: 14px;
@@ -31,10 +31,15 @@ ion-card {
 .con-icons {
   float: right;
   .con-icons-align {
-    margin-right: 10px;
+    margin-right: 25px;
+    width: 24px !important;
+    height: 24px !important;
   }
   .con-icons-align:hover {
     cursor: pointer;
+  }
+  .con-icons-sea {
+    margin-right: 5px;
   }
 }
 

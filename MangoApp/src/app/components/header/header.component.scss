@@ -1,20 +1,51 @@
 ion-toolbar {
-    --ion-background-color: transparent
-      linear-gradient(251deg, #dfe3fa 0%, #e0eaf6 52%, #c3d9f6 100%) 0% 0%
-      no-repeat padding-box;
-      backdrop-filter: blur(3px);
+  --ion-background-color: transparent linear-gradient(251deg, #dfe3fa 0%, #e0eaf6 52%, #c3d9f6 100%) 0% 0% no-repeat
+    padding-box;
+  backdrop-filter: blur(3px);
 }
 
 .header {
-    overflow: hidden;
-    padding: 20px 10px;
-  }
+  overflow: hidden;
+  padding: 20px 10px;
+}
 
-  .header-right {
-    float: right;
-    margin-top: -30px;
+.header-right {
+  float: right;
+  margin-top: -40px;
+}
+// .row {
+//   font-family: Montserrat !important;
+// }
+.con-icons {
+  float: right;
+  .con-icons-align {
+    margin-right: 6px;
+    width: 24px !important;
+    height: 24px !important;
   }
+  .con-icons-align:hover {
+    cursor: pointer;
+  }
+  .con-icons-sea {
+    margin-right: 5px;
+  }
+}
 
-  .row{
-    font-family: Montserrat !important;
-  }
+.name {
+  font-size: 12px;
+  text-align-last: right;
+  margin-right: 12px;
+  font-family: Montserrat !important;
+  margin-left: 25px
+}
+.subname {
+  font-size: 8px;
+  font-family: Montserrat !important;
+}
+.profile{
+    vertical-align: middle;
+    width: 45px;
+    height: 45px;
+    border-radius: 10%;
+    margin-right: 45px;
+}
