@@ -1,11 +1,27 @@
 <ion-content>
-  <div class="close-icon" (click)="close()">
-    <img src="../../../assets/icon/cancel.svg">
+  <span *ngIf="isDefaultAlert && !isDashboardCustomize" class="alert-box">
+    <div class="close-icon" (click)="close()">
+      <img src="../../../assets/icon/cancel.svg">
+    </div>
+    <div class="title" *ngIf="alertContent">
+      <span>{{alertContent}}</span>
+    </div>
+    <div class="button-container">
+      <button (click)="confirm()">Confirm</button>
+    </div>
+  </span>
+
+  <div *ngIf="isDashboardCustomize && !isDefaultAlert" class="widget">
+    <div class="widget-close-icon" (click)="close()">
+      <img src="../../../assets/icon/cancel.svg">
+    </div>
+    <div class="widget-header">
+      <span class="widget-title">Select Widgets</span>
+      <span class="widget-reset" (click)="resetDashboard()">Reset Dashboard</span>
+    </div>
+    <div class="button-container">
+      <button (click)="confirm()">Submit</button>
+    </div>
   </div>
-  <div class="title" *ngIf="alertContent">
-    <span>{{alertContent}}</span>
-  </div>
-  <div class="button-container">
-    <button (click)="confirm()">Confirm</button>
-  </div>
+
 </ion-content>

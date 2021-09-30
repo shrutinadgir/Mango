@@ -31,18 +31,6 @@ export class DashboardPage implements OnInit {
     else if (tab === 'lm') _self.selectedTabTitle = 'Library Management'
   }
 
-  async openAlertModal() {
-    const modal = await this.modalController.create({
-      component: AlertModalPage,
-      cssClass: 'mango-alert-modal',
-      backdropDismiss: false,
-      componentProps: {
-        'alertContent': `Are You Sure You Want to Reset to default widgets?`,
-      }
-    });
-    return await modal.present();
-  }
-
   getProjects() {
     const _self = this;
     _self.backendService.getProjectLists().then(data => {
@@ -59,9 +47,28 @@ export class DashboardPage implements OnInit {
       console.log("getting error for fetching projects lists:", err);
     })
   }
+
   convertStringToNum(value) {
     let num = value.split("%");
     return toNumber(num[0]);
+  }
+
+  openDashboardCustomization(isDashboardCustomize) {
+    const msg = `Are You Sure You Want to Reset to default widgets?`;
+    this.openAlertModal(msg, isDashboardCustomize);
+  }
+
+  async openAlertModal(msg, isDashboardCustomize = false) {
+    let props = { isDashboardCustomize }
+    if (!msg) msg = `Are You Sure You Want to Reset to default widgets?`;
+    if (!isDashboardCustomize) props['alertContent'] = msg;
+    const modal = await this.modalController.create({
+      component: AlertModalPage,
+      cssClass: isDashboardCustomize ? 'mango-dashboard-customization-modal' : 'mango-alert-modal',
+      backdropDismiss: false,
+      componentProps: props
+    });
+    return await modal.present();
   }
 
 }

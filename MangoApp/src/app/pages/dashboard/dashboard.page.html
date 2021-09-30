@@ -9,7 +9,7 @@
           <ion-icon name="open-outline" class="tab-right-icon"></ion-icon>
           <span class="tab-right-text">Open Fiori App</span>
         </ion-button>
-        <ion-button fill="clear">
+        <ion-button fill="clear" (click)="openDashboardCustomization(true)">
           <ion-icon name="build-outline" class="tab-right-icon"></ion-icon>
           <span class="tab-right-text">Dashboard Customize</span>
         </ion-button>
@@ -58,10 +58,12 @@
                 <td>{{project.Start_dt | date : 'shortDate'}}</td>
                 <td>{{project.End_dt | date : 'shortDate'}}</td>
                 <td>{{project.Num_machines}}</td>
-                <td>{{project.Region}}</td>                
-                <td><progress id="file" value={{project.Time_hours}} max="100" ></progress>{{project.Time_hours}}%</td>
-                <td><progress id="file" value={{project.Revenue_dollars}} max="100" ></progress>{{project.Revenue_dollars}}%</td>
-                <td><progress id="file" value={{project.Cost_dollars}} max="100" ></progress>{{project.Cost_dollars}}%</td>
+                <td>{{project.Region}}</td>
+                <td><progress id="file" value={{project.Time_hours}} max="100"></progress>{{project.Time_hours}}%</td>
+                <td><progress id="file" value={{project.Revenue_dollars}}
+                    max="100"></progress>{{project.Revenue_dollars}}%</td>
+                <td><progress id="file" value={{project.Cost_dollars}} max="100"></progress>{{project.Cost_dollars}}%
+                </td>
                 <td>{{project.status}}</td>
               </tr>
             </tbody>
