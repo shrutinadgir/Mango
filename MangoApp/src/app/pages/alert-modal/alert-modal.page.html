@@ -11,31 +11,40 @@
     </div>
   </span>
 
-  <div *ngIf="isDashboardCustomize && !isDefaultAlert" class="widget">
-    <div class="widget-close-icon" (click)="close()">
-      <img src="../../../assets/icon/cancel.svg">
-    </div>
-    <div class="widget-header">
-      <span class="widget-title">Select Widgets</span>
-      <span class="widget-reset" (click)="resetDashboard()">
-        <span class="reset-icon"><img src="../../../assets/icon/reset.svg"></span>
-        <span>Reset Dashboard</span></span>
-    </div>
+  <div *ngIf="isDashboardCustomize && !isDefaultAlert" class="widget-container">
+    <ion-grid>
+      <ion-row class="close-row">
+        <ion-col (click)="close()" class="close-col">
+          <img src="../../../assets/icon/cancel.svg">
+        </ion-col>
+      </ion-row>
+      <ion-row class="header-row">
+        <ion-col>
+          <div class="ion-text-start header-title">
+            Select Widgets
+          </div>
+        </ion-col>
+        <ion-col>
+          <div class="ion-text-end header-reset" (click)="resetDashboard()">
+            <img src="../../../assets/icon/reset.svg">
+            <span class="header-reset-title">Reset Dashboard</span>
+          </div>
+        </ion-col>
+      </ion-row>
 
-    <ion-grid class="widget-content-container">
-      <ion-row class="widget-content">
-        <ion-col size-xs='12' size-sm='6' size-md="6" size-lg="6" size-xl="4"
+      <ion-row class="content-row">
+        <ion-col class="content-col" size-xs='12' size-sm='6' size-md="6" size-lg="6" size-xl="4"
           *ngFor="let item of dashboardCustomizationValue">
           <ion-row>
             <ion-col size-xs='1' size-md="1" style="padding-top: 40px;">
               <ion-checkbox [(ngModel)]="item.isChecked"></ion-checkbox>
             </ion-col>
-            <ion-col size-xs='8' size-md="8">
-              <ion-card class="card-main">
-                <ion-badge class="card-badge">
+            <ion-col size-xs='11' size-md="11">
+              <ion-card class="content-card-container">
+                <ion-badge class="content-card-badge">
                   <img src="{{item.icon}}">
                 </ion-badge>
-                <div class="widget-content-title-container">
+                <div class="content-card-title">
                   <ion-label>{{item.title}}</ion-label>
                 </div>
               </ion-card>
@@ -43,10 +52,10 @@
           </ion-row>
         </ion-col>
       </ion-row>
+      <ion-row class="button-row">
+        <button (click)="submitDashboardWidgets()" position="bottom">Submit</button>
+      </ion-row>
     </ion-grid>
-    <div class="button-container" *ngIf="isDashboardCustomize && !isDefaultAlert">
-      <button (click)="submitDashboardWidgets()">Submit</button>
-    </div>
   </div>
 
 </ion-content>
