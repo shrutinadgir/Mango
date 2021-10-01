@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24.004" viewBox="0 0 24 24.004">
+  <g id="bell" transform="translate(-54.055 -68.813)">
+    <rect id="Rectangle_19614" data-name="Rectangle 19614" width="24" height="24" transform="translate(54.055 68.813)" fill="none"/>
+    <path id="path18" d="M68.687,0a2.262,2.262,0,0,0-2.25,2.25V3.3A9.011,9.011,0,0,0,59.686,12v5.251a.75.75,0,1,0,1.5,0V12a7.5,7.5,0,0,1,15,0v7.5H60.436a.75.75,0,0,0,0,1.5h5.251a3,3,0,0,0,6,0h5.251a.75.75,0,0,0,.75-.75V12A9.011,9.011,0,0,0,70.938,3.3V2.25A2.262,2.262,0,0,0,68.687,0Zm0,1.5a.739.739,0,0,1,.75.75v.788c-.248-.021-.5-.038-.75-.038s-.5.017-.75.038V2.25a.739.739,0,0,1,.75-.75ZM67.187,21h3a1.5,1.5,0,1,1-3,0Z" transform="translate(-2.631 68.813)"/>
+    <g id="Group_15455" data-name="Group 15455" transform="translate(-994.945 -116.185)">
+      <circle id="Ellipse_1604" data-name="Ellipse 1604" cx="7" cy="7" r="7" transform="translate(1059 187.998)" fill="#db303b"/>
+      <text id="_2" data-name="2" transform="translate(1063 198.998)" fill="#fff" font-size="11" font-family="Montserrat-SemiBold, Montserrat" font-weight="600" letter-spacing="0.1em"><tspan x="0" y="0">2</tspan></text>
+    </g>
+  </g>
+</svg>
