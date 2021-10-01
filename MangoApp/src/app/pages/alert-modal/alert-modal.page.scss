@@ -1,8 +1,16 @@
+.alert-class {
+    --background: transparent linear-gradient(251deg, #E4E7F6 0%, #E0EAF6 52%, #C3D9F6 100%) 0% 0% no-repeat padding-box;
+}
+.dashboard-customize {
+    --background: #EBEFFF 0% 0% no-repeat padding-box;
+}
 ion-content {
     --overflow: hidden;
-    --background: transparent linear-gradient(251deg, #E4E7F6 0%, #E0EAF6 52%, #C3D9F6 100%) 0% 0% no-repeat padding-box;
     --box-shadow: 0px 16px 20px #0000001A;
     .alert-box {
+        overflow: hidden;
+        background: transparent linear-gradient(251deg, #E4E7F6 0%, #E0EAF6 52%, #C3D9F6 100%) 0% 0% no-repeat padding-box;
+        box-shadow: 0px 16px 20px #0000001A;
         .close-icon {
             float: right;
             position: relative;
@@ -67,9 +75,8 @@ ion-content {
             position: absolute;
             .widget-title {
                 float: left;
-                left: 5%;
-                top: 8%;
-                position: fixed;
+                left: 17%;
+                position: relative;
                 width: 237px;
                 height: 32px;
                 font-family: Montserrat;
@@ -81,7 +88,7 @@ ion-content {
             }
             .widget-reset {
                 float: right;
-                right: 8%;
+                right: 7%;
                 position: fixed;
                 width: 122px;
                 height: 15px;
@@ -91,16 +98,68 @@ ion-content {
                 letter-spacing: 1.2px;
                 color: #000000;
                 opacity: 1;
+                width: 144px;
+                .reset-icon {
+                    zoom: 0.8;
+                    top: 38%;
+                    position: relative;
+                    margin-right: 3px;
+                }
             }
             .widget-reset:hover {
                 cursor: pointer;
             }
         }
-    }
-}
-
-@media screen and (min-width: 768px) and (max-width: 1024px) {
-    .widget-reset {
-        top: 10%;
+        .widget-content-container {
+            top: 20%;
+            right: 7%;
+            position: absolute;
+            .widget-content {
+                float: left;
+                left: 3%;
+                position: relative; 
+                .card-main {
+                    position: relative; 
+                    width: 269px;
+                    height: 82px;
+                    overflow: initial;
+                    --background: #EEF3FB 0% 0% no-repeat padding-box;
+                    box-shadow: 0px 8px 16px #0000002C;
+                    border: 1px solid #FFFFFF;
+                    border-radius: 20px;
+                    opacity: 1;
+                    backdrop-filter: blur(13px);
+                    -webkit-backdrop-filter: blur(13px);
+                    .card-badge {
+                        position: absolute;
+                        top: -8%;
+                        left: -10px;
+                        width: 50px;
+                        height: 50px;
+                        background: #B0BFE4;
+                        box-shadow: 0px 8px 16px #0000002C;
+                        border-radius: 15px;
+                        opacity: 1;
+                        backdrop-filter: blur(13px);
+                        -webkit-backdrop-filter: blur(13px);
+                        img {
+                            opacity: 1;
+                            padding: 8px;
+                            margin-left: -3px;
+                        }
+                    }
+                    .widget-content-title-container {
+                        padding: 28px; 
+                        text-align:center;
+                        font-family: Montserrat;
+                        font-size: 16px;
+                        font-weight: bold;
+                        letter-spacing: 1.6px;
+                        color: #000000;
+                        opacity: 1;
+                    }
+                  }
+            }
+        }
     }
 }

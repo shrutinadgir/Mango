@@ -1,4 +1,4 @@
-<ion-content>
+<ion-content [ngClass]="isDefaultAlert ? 'alert-class' : 'dashboard-customize'">
   <span *ngIf="isDefaultAlert && !isDashboardCustomize" class="alert-box">
     <div class="close-icon" (click)="close()">
       <img src="../../../assets/icon/cancel.svg">
@@ -6,7 +6,7 @@
     <div class="title" *ngIf="alertContent">
       <span>{{alertContent}}</span>
     </div>
-    <div class="button-container">
+    <div class="button-container" *ngIf="isDefaultAlert && !isDashboardCustomize">
       <button (click)="confirm()">Confirm</button>
     </div>
   </span>
@@ -17,10 +17,35 @@
     </div>
     <div class="widget-header">
       <span class="widget-title">Select Widgets</span>
-      <span class="widget-reset" (click)="resetDashboard()">Reset Dashboard</span>
+      <span class="widget-reset" (click)="resetDashboard()">
+        <span class="reset-icon"><img src="../../../assets/icon/reset.svg"></span>
+        <span>Reset Dashboard</span></span>
     </div>
-    <div class="button-container">
-      <button (click)="confirm()">Submit</button>
+
+    <ion-grid class="widget-content-container">
+      <ion-row class="widget-content">
+        <ion-col size-xs='12' size-sm='6' size-md="6" size-lg="6" size-xl="4"
+          *ngFor="let item of dashboardCustomizationValue">
+          <ion-row>
+            <ion-col size-xs='1' size-md="1" style="padding-top: 40px;">
+              <ion-checkbox [(ngModel)]="item.isChecked"></ion-checkbox>
+            </ion-col>
+            <ion-col size-xs='8' size-md="8">
+              <ion-card class="card-main">
+                <ion-badge class="card-badge">
+                  <img src="{{item.icon}}">
+                </ion-badge>
+                <div class="widget-content-title-container">
+                  <ion-label>{{item.title}}</ion-label>
+                </div>
+              </ion-card>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <div class="button-container" *ngIf="isDashboardCustomize && !isDefaultAlert">
+      <button (click)="submitDashboardWidgets()">Submit</button>
     </div>
   </div>
 
