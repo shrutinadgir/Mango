@@ -1,60 +1,21 @@
 <div class="header">
-  <!-- <ion-title style="color: #083A81;font-size: 26px;letter-spacing: 1px;">tec.nicum</ion-title> -->
-  <ion-title>
-    <img src="..\assets\images\Logo.svg">
-  </ion-title>
-  <div class="header-right">
-    <ion-buttons slot="secondary">
-      <span class="con-icons">
-        <ion-button>
-          <img src="../../../assets/images/icon-Search.svg" class="con-icons-align">
-        </ion-button>
-        <ion-button>
-          <img src="../../../assets/images/Help.svg" class="con-icons-align">
-        </ion-button>
-        <ion-button>
-          <img src="../../../assets/images/bell.svg" class="con-icons-align">
-        </ion-button>
-        <ion-button>
-          <img src="../../../assets/images/Settings.svg" class="con-icons-align">
-        </ion-button>
-
-
-
-        <!-- <img src="../../../assets/images/Help.svg"  class="con-icons-align">
-        <img src="../../../assets/images/Bell.svg"  class="con-icons-align">
-        <img src="../../../assets/images/Settings.svg"  class="con-icons-align">
-          Hello Npk ! <br> Line Manager -->
-      </span>
-      <div class="name">
-        Hello John !
-        <div class="subname">
-          Line Manager
-        </div>
-      </div>
-      <div>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="7">
+        <img src="..\assets\images\Logo.svg" style="margin-left: 2%;">
+      </ion-col>
+      <ion-col size="3" style="text-align: end;">
+        <img src="../../../assets/images/icon-Search.svg" class="source">
+        <img src="../../../assets/images/Help.svg" class="source">
+        <img src="../../../assets/images/bell.svg" class="source">
+        <img src="../../../assets/images/Settings.svg" class="source">
+      </ion-col>
+      <ion-col size="1" style="text-align: end;">
+        <!-- <span>Hello John !</span><br><span>Line Manager</span> -->
+        <ion-label>Hello John!</ion-label><br><ion-label>Line Manager</ion-label>
+      </ion-col>
+      <ion-col size="1">
         <img src="..\assets\images\img_avatar.png" class="profile">
-      </div>
-    </ion-buttons>
-
-    <!-- <ion-button>
-        <ion-icon slot="icon-only" name="help-circle-outline"></ion-icon>
-      </ion-button>   
-      <ion-button>
-        <ion-icon slot="icon-only" name="notifications-outline"></ion-icon>s
-      </ion-button>
-      <ion-button>
-        <ion-icon slot="icon-only" name="settings-outline"></ion-icon>
-      </ion-button> -->
-
-
-    <!-- <div class="row">
-        Hello Npk ! <br> Line Manager
-      </div> -->
-
-    <!-- <div style="width: 30px;">
-        <img src="..\assets\images\profile.png">
-      </div> -->
-    <!-- </ion-buttons> -->
-  </div>
-</div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
