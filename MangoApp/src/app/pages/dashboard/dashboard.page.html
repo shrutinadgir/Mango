@@ -8,12 +8,13 @@
           <ion-title (click)="openAlertModal()" class="hov-label">{{selectedTabTitle}}</ion-title>
         </ion-col>
         <ion-col size="7" style="text-align: end;" class="hov-label">
-          <img src="../../../assets/images/Open Fiori.svg" class="source"><label style="font-size: 0.75rem;">Open Fiori
-            App</label>
-          <img src="../../../assets/images/dashboard_customize.svg" class="source"><label
-            style="font-size: 0.75rem;">Dashboard Customize</label>
-          <img src="../../../assets/images/Activities.svg" class="source"><label
-            style="font-size: 0.75rem;">Activities</label>
+          <span> <img src="../../../assets/images/Open Fiori.svg" class="source"><label class="con-style">Open Fiori
+              App</label></span>
+          <span (click)="openDashboardCustomization(true)"><img src="../../../assets/images/dashboard_customize.svg"
+              class="source"><label class="con-style">Dashboard
+              Customize</label></span>
+          <span><img src="../../../assets/images/Activities.svg" class="source"><label
+              class="con-style">Activities</label></span>
         </ion-col>
       </ion-row>
     </ion-grid>
@@ -48,7 +49,7 @@
             </thead>
             <tbody>
               <tr *ngFor="let project of projectLists">
-                <td class="sticky-col first-col" style="color: blue; font-weight: bold;cursor: pointer">
+                <td class="sticky-col first-col" style="color: #083A81; font-weight: bold;cursor: pointer">
                   {{project.project_id}}</td>
                 <td>{{project.customer_name}}</td>
                 <td>{{project.Account_name}}</td>
@@ -64,7 +65,10 @@
                 <td><progress id="file" value={{project.Cost_dollars}} max="100"></progress> {{project.Cost_dollars}}%
                 </td>
                 <td><button
-                    [ngStyle]="{'background-color':project.status === 'in-progess' ? '#37D9BF' : project.status === 'on Hold' ? '#F9DA7C' : '#97B5FA'}">
+                    [ngStyle]="{'background-color':project.status === 'in-progress' ? '#37D9BF' : project.status === 'on Hold' ? '#F9DA7C' : '#97B5FA'}">
+                    {{project.status}}</button></td>
+                <td><button
+                    [ngStyle]="{'background-color':project.status === 'in-progress' ? '#37D9BF' : project.status === 'on Hold' ? '#F9DA7C' : '#97B5FA'}">
                     {{project.status}}</button></td>
               </tr>
             </tbody>

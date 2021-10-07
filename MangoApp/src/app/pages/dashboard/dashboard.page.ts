@@ -19,7 +19,7 @@ export class DashboardPage implements OnInit {
     public backendService: BackendCallService,
     public loadingController: LoadingController,
     public sortPipe: SortingPipe
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.getProjects();

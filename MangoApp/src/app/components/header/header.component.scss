@@ -32,24 +32,33 @@ ion-toolbar {
 }
 
 .name {
-  font-size: 12px;
-  text-align-last: right;
-  margin-right: 12px;
+  font-size: 13px;
+  // text-align-last: right;
+  // margin-right: 12px;
   font-family: Montserrat !important;
   // margin-left: 25px
 }
 .subname {
-  font-size: 8px;
+  font-size: 0.55rem;
   font-family: Montserrat !important;
 }
-.profile{
-    vertical-align: middle;
-    width: 45px;
-    height: 45px;
-    border-radius: 10%;
-    margin-right: 45px;
-    margin-left: 11%;
+.profile {
+  vertical-align: middle;
+  width: 45px;
+  height: 45px;
+  border-radius: 10%;
+  margin-right: 45px;
+  margin-left: 11%;
 }
-.source{
+.source {
   margin-right: 9%;
+}
+
+@media screen and (min-width: 767px) and (max-width: 1024px) {
+  .name {
+    font-size: 9px !important;
+  }
+  .subname {
+    font-size: 7px !important;
+  }
 }
