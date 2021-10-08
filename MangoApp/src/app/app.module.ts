@@ -28,6 +28,7 @@ const isIE =
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
+    HttpClientModule,
     MsalModule.forRoot(
       new PublicClientApplication({
         auth: {
@@ -52,10 +53,13 @@ const isIE =
         interactionType: InteractionType.Popup,
         protectedResourceMap: new Map([
           ['https://graph.microsoft.com/v1.0/me', ['user.read']],
+          [
+            'https://sldemo.azure-api.net/projects',
+            ['api://9fea343a-012d-48e6-b7e8-f8de5f9e2860/.default'],
+          ],
         ]),
       }
     ),
-    HttpClientModule,
   ],
   providers: [
     {
@@ -66,7 +70,7 @@ const isIE =
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     BackendCallService,
-    SortingPipe
+    SortingPipe,
   ],
   bootstrap: [AppComponent],
 })
