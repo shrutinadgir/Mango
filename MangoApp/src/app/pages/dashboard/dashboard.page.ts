@@ -19,7 +19,7 @@ export class DashboardPage implements OnInit {
     public backendService: BackendCallService,
     public loadingController: LoadingController,
     public sortPipe: SortingPipe
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.getProjects();
@@ -89,6 +89,7 @@ export class DashboardPage implements OnInit {
       backdropDismiss: false,
       componentProps: props,
     });
-    return await modal.present();
+    await modal.present();
+    const { data: { selectedDashboardWidgets } } = await modal.onWillDismiss();
   }
 }

@@ -2,23 +2,22 @@
   <app-header></app-header>
   <app-side-nav (_selectedTab)="sideNavSelectedTab($event)"></app-side-nav>
   <div class="title">
-    <ion-title (click)="openAlertModal()" class="hov-label">{{selectedTabTitle}}</ion-title>
-    <div class="dash-title">
-      <ion-buttons>
-        <ion-button fill="clear">
-          <img src="../../../assets/images/Open Fiori.svg" class="tab-right-icon">
-          <span class="tab-right-text"> Open Fiori App</span>
-        </ion-button>
-        <ion-button fill="clear" (click)="openDashboardCustomization(true)">
-          <ion-icon name="build-outline" class="tab-right-icon"></ion-icon>
-          <span class="tab-right-text">Dashboard Customize</span>
-        </ion-button>
-        <ion-button fill="clear">
-          <img src="../../../assets/images/Activities.svg" class="tab-right-icon">
-          <span class="tab-right-text"> Activities</span>
-        </ion-button>
-      </ion-buttons>
-    </div>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="4">
+          <ion-title (click)="openAlertModal()" class="hov-label">{{selectedTabTitle}}</ion-title>
+        </ion-col>
+        <ion-col size="7" style="text-align: end;" class="hov-label">
+          <span> <img src="../../../assets/images/Open Fiori.svg" class="source"><label class="con-style">Open Fiori
+              App</label></span>
+          <span (click)="openDashboardCustomization(true)"><img src="../../../assets/images/dashboard_customize.svg"
+              class="source"><label class="con-style">Dashboard
+              Customize</label></span>
+          <span><img src="../../../assets/images/Activities.svg" class="source"><label
+              class="con-style">Activities</label></span>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
     <ion-card *ngIf="selectedTabTitle == 'DashBoard'">
       <ion-card-header>
         <ion-card-subtitle class="dash-cont-title">Project Status Tracker
@@ -35,7 +34,7 @@
             <thead>
               <tr>
                 <th class="sticky-col first-col">Project ID</th>
-                <th>Customer Name <img (click)='sortData(projectLists)' src="/assets/images/Sorting.svg"/></th>
+                <th>Customer Name <img (click)='sortData(projectLists)' src="/assets/images/Sorting.svg" /></th>
                 <th>Account Name</th>
                 <th>Project<br>Manager Name</th>
                 <th>Start Date</th>
@@ -50,7 +49,7 @@
             </thead>
             <tbody>
               <tr *ngFor="let project of projectLists">
-                <td class="sticky-col first-col" style="color: blue; font-weight: bold;cursor: pointer">
+                <td class="sticky-col first-col" style="color: #083A81; font-weight: bold;cursor: pointer">
                   {{project.project_id}}</td>
                 <td>{{project.customer_name}}</td>
                 <td>{{project.Account_name}}</td>
@@ -59,12 +58,18 @@
                 <td>{{project.End_dt | date : 'shortDate'}}</td>
                 <td>{{project.Num_machines}}</td>
                 <td>{{project.Region}}</td>
-                <td><progress id="file" value={{project.Time_hours}} max="100"></progress> {{project.Time_hours}}%</td>
+                <td><progress id="file" value={{project.Time_hours}} max="100"></progress> {{project.Time_hours}}%
+                </td>
                 <td><progress id="file" value={{project.Revenue_dollars}} max="100"></progress>
                   {{project.Revenue_dollars}}%</td>
                 <td><progress id="file" value={{project.Cost_dollars}} max="100"></progress> {{project.Cost_dollars}}%
                 </td>
-                <td><button>{{project.status}}</button></td>
+                <td><button
+                    [ngStyle]="{'background-color':project.status === 'in-progress' ? '#37D9BF' : project.status === 'on Hold' ? '#F9DA7C' : '#97B5FA'}">
+                    {{project.status}}</button></td>
+                <td><button
+                    [ngStyle]="{'background-color':project.status === 'in-progress' ? '#37D9BF' : project.status === 'on Hold' ? '#F9DA7C' : '#97B5FA'}">
+                    {{project.status}}</button></td>
               </tr>
             </tbody>
           </table>
