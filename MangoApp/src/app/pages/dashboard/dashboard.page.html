@@ -18,7 +18,7 @@
         </ion-col>
       </ion-row>
     </ion-grid>
-    <ion-card *ngIf="selectedTabTitle == 'DashBoard'">
+    <ion-card *ngIf="selectedTabTitle == 'DashBoard' && isProjectTrackerWidgetPermission">
       <ion-card-header>
         <ion-card-subtitle class="dash-cont-title">Project Status Tracker
           <span class="con-icons">
@@ -76,5 +76,17 @@
         </div>
       </div>
     </ion-card>
+
+    <ion-card *ngIf="selectedTabTitle == 'DashBoard' && isTaskManagerWidgetPermission">
+      <ion-card-header>
+        <ion-card-subtitle class="dash-cont-title">Task Manager
+          <span class="con-icons">
+            <img src="../../../assets/images/Box.png" class="con-icons-align">
+            <img src="../../../assets/images/add.svg" class="con-icons-sea">
+          </span>
+        </ion-card-subtitle>
+      </ion-card-header>
+    </ion-card>
+
   </div>
 </ion-content>
