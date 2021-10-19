@@ -7,20 +7,19 @@ import { MsalService } from '@azure/msal-angular';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-  formData={email:'',password:''}
+  formData = { email: '', password: '' };
   loginDisplay = false;
   userData: any;
-  constructor(private router: Router,private authService: MsalService) { }
+  constructor(private router: Router, private authService: MsalService) {}
 
-  ngOnInit() {
-  }
-  login(){
-    console.log("form Data",this.formData)
-    this.router.navigate(['/dashboard'])
+  ngOnInit() {}
+  login() {
+    console.log('form Data', this.formData);
+    this.router.navigate(['/dashboard']);
   }
 
   loginWithSSO() {
-    this.authService.loginPopup().subscribe({ 
+    this.authService.loginPopup().subscribe({
       next: (result) => {
         console.log(result, JSON.stringify(result));
         this.userData = result.account;
@@ -28,24 +27,18 @@ export class LoginPage implements OnInit {
       },
       error: (error) => console.log(error),
     });
-
   }
 
   setLoginDisplay() {
     this.loginDisplay = this.authService.instance.getAllAccounts().length > 0;
     console.log('setLoginDisplay', this.loginDisplay, this.userData.name);
     let silentRequest = {
-      scopes:['Mail.Read'],
-      account:this.userData.username,
-      forceRefresh:false
-    }
-    console.log('silentRequest',silentRequest);
-
-    this.authService.acquireTokenSilent(silentRequest).subscribe((res:any)=>{
-      console.log('res',res);
-    },err=>console.log('error',err)
-    )
-    this.router.navigate(['/dashboard'])
+      scopes: ['Mail.Read'],
+      account: this.userData.username,
+      forceRefresh: false,
+    };
+    console.log('silentRequest', silentRequest);
+    this.router.navigate(['/dashboard']);
     // this.router.navigate(['/dashboard'], {
     //   queryParams: { userName: this.userData.name }
     // });

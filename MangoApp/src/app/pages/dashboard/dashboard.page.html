@@ -1,4 +1,4 @@
-<ion-content>
+<ion-content fullscreen="true" no-bounce>
   <app-header></app-header>
   <app-side-nav (_selectedTab)="sideNavSelectedTab($event)"></app-side-nav>
   <div class="title">
@@ -33,7 +33,7 @@
           <table class="table">
             <thead>
               <tr>
-                <th class="sticky-col first-col">Project ID</th>
+                <th class="sticky-col first-col" style="margin-left: 5px;">Project ID</th>
                 <th>Customer Name <img (click)='sortData(projectLists)' src="/assets/images/Sorting.svg" /></th>
                 <th>Account Name</th>
                 <th>Project<br>Manager Name</th>
@@ -45,6 +45,7 @@
                 <th>Revenue(in $)<br>Actual vs Planned</th>
                 <th>Cost(in $)<br>Actual vs Planned</th>
                 <th>Status</th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
@@ -67,10 +68,7 @@
                 <td><button
                     [ngStyle]="{'background-color':project.status === 'in-progress' ? '#37D9BF' : project.status === 'on Hold' ? '#F9DA7C' : '#97B5FA'}">
                     {{project.status}}</button></td>
-                <td><button
-                    [ngStyle]="{'background-color':project.status === 'in-progress' ? '#37D9BF' : project.status === 'on Hold' ? '#F9DA7C' : '#97B5FA'}">
-                    {{project.status}}</button></td>
-              </tr>
+                <span><img class="moreicon" src="../../../assets/icon/more.svg"></span>
             </tbody>
           </table>
         </div>
