@@ -45,12 +45,12 @@ export class DashboardPage implements OnInit {
         const { projects } = data;
         if (isNotEmptyArray(projects)) {
           projects.forEach((_p) => {
-            if (isNaN(_p.Cost_dollars))
-              _p.Cost_dollars = _self.convertStringToNum(_p.Cost_dollars);
-            if (isNaN(_p.Revenue_dollars))
-              _p.Revenue_dollars = _self.convertStringToNum(_p.Revenue_dollars);
-            if (isNaN(_p.Time_hours))
-              _p.Time_hours = _self.convertStringToNum(_p.Time_hours);
+            // if (isNaN(_p.Cost_dollars))
+            //   _p.Cost_dollars = _self.convertStringToNum(_p.Cost_dollars);
+            // if (isNaN(_p.Revenue_dollars))
+            //   _p.Revenue_dollars = _self.convertStringToNum(_p.Revenue_dollars);
+            // if (isNaN(_p.Time_hours))
+            //   _p.Time_hours = _self.convertStringToNum(_p.Time_hours);
           });
           return (_self.projectLists = projects);
         }
@@ -60,10 +60,10 @@ export class DashboardPage implements OnInit {
       });
   }
 
-  convertStringToNum(value) {
-    let num = value.split('%');
-    return toNumber(num[0]);
-  }
+  // convertStringToNum(value) {
+  //   let num = value.split('%');
+  //   return toNumber(num[0]);
+  // }
 
   sortData(data) {
     this.sorOrderStatus = !this.sorOrderStatus;

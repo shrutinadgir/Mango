@@ -216,3 +216,49 @@ table {
   margin-top: 9px;
   margin-left: 9px;
 }
+.tooltip {
+  width: 11.5em;
+  left: 0;
+  height: 20px;
+  position: absolute;
+  text-align: right;
+  cursor: pointer;
+}
+.tooltip span {
+  visibility: hidden;
+  color: #fff;
+  text-align: left;
+  border-radius: 6px;
+  position: absolute;
+  z-index: 1;
+  bottom: 130%;
+}
+.tooltip span::after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 0px;
+  left: 20%;
+  bottom: 5px;
+  border: 3px solid white;
+  border-bottom: 0;
+  border-top: 15px solid #d2e7f7;
+  transform: translate(-50%, calc(100% + 5px));
+}
+.tooltip input {
+  display: none;
+}
+.tooltip input:checked + span {
+  visibility: visible;
+  opacity: 1;
+  width: 155px;
+  height: 60px;
+  padding: 3px 15px;
+  margin-left: -120px;
+  line-height: 18px;
+  font-size: 10px;
+  font-family: Montserrat !important ;
+  background: linear-gradient(244deg, #e4e7f6 0%, #e0eaf6 52%, #c3d9f6 100%) 0% 0% no-repeat padding-box;
+  border: 1px solid white;
+  color: black;
+}
