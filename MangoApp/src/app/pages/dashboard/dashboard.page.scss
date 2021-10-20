@@ -25,7 +25,7 @@ ion-card {
   backdrop-filter: blur(8px);
   border-radius: 14px;
   border: 1px solid white;
-  box-shadow: 0px 8px 16px #0000002C;
+  box-shadow: 0px 8px 16px #0000002c;
 }
 .dash-cont-title {
   text-align: left;
@@ -179,12 +179,12 @@ table {
   }
 
   /* Chrome */
-  progress[value="100"]::-webkit-progress-value {
+  progress[value="10000"]::-webkit-progress-value {
     background: #f00;
   }
 
   /* Firefox */
-  progress[value="100"]::-moz-progress-bar {
+  progress[value="10000"]::-moz-progress-bar {
     background: #f00;
   }
 
