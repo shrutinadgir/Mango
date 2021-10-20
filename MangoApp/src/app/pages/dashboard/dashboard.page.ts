@@ -3,9 +3,15 @@ import { ModalController, PopoverController } from '@ionic/angular';
 import { AlertModalPage } from '../alert-modal/alert-modal.page';
 import { BackendCallService } from 'src/app/services/backend-call/backend-call.service';
 import { LoadingController } from '@ionic/angular';
-import { isNotEmptyArray, toNumber } from 'src/app/utilities/utils';
+import {
+  isEmptyArray,
+  isNotEmptyArray,
+  isNotNullAndUndefined,
+  toNumber,
+} from 'src/app/utilities/utils';
 import { SortingPipe } from 'src/app/pipes/sorting.pipe';
 import { StatusPopoverComponent } from 'src/app/components/status-popover/status-popover.component';
+import { LocalSettingsService } from './../../services/local-settings/local-settings.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -18,19 +24,27 @@ export class DashboardPage implements OnInit {
   sorOrderStatus: boolean = false;
   tasksManagersData: Array<[]> = [];
   taskManagerUsers: any = [];
+  isProjectTrackerWidgetPermission: boolean = true;
+  isTaskManagerWidgetPermission: boolean = false;
+  isFutureProjectsWidgetPermission: boolean = false;
+  isOfferManagementWidgetPermission: boolean = false;
+  isOrderManagementWidgetPermission: boolean = false;
+  isRiskAssesssmentWidgetPermission: boolean = false;
+
   constructor(
     public modalController: ModalController,
     public backendService: BackendCallService,
     public loadingController: LoadingController,
     public sortPipe: SortingPipe,
-    public popoverController: PopoverController
+    public popoverController: PopoverController,
+    public localSettingsSrv: LocalSettingsService
   ) {}
 
   ngOnInit() {
     this.getProjects();
     this.getTaskManagerData();
+    this.getDashboardWidgetPermission();
   }
-
   sideNavSelectedTab(tab) {
     const _self = this;
     if (tab === 'dash') _self.selectedTabTitle = 'DashBoard';
@@ -51,12 +65,12 @@ export class DashboardPage implements OnInit {
         const { projects } = data;
         if (isNotEmptyArray(projects)) {
           projects.forEach((_p) => {
-            if (isNaN(_p.Cost_dollars))
-              _p.Cost_dollars = _self.convertStringToNum(_p.Cost_dollars);
-            if (isNaN(_p.Revenue_dollars))
-              _p.Revenue_dollars = _self.convertStringToNum(_p.Revenue_dollars);
-            if (isNaN(_p.Time_hours))
-              _p.Time_hours = _self.convertStringToNum(_p.Time_hours);
+            // if (isNaN(_p.Cost_dollars))
+            //   _p.Cost_dollars = _self.convertStringToNum(_p.Cost_dollars);
+            // if (isNaN(_p.Revenue_dollars))
+            //   _p.Revenue_dollars = _self.convertStringToNum(_p.Revenue_dollars);
+            // if (isNaN(_p.Time_hours))
+            //   _p.Time_hours = _self.convertStringToNum(_p.Time_hours);
           });
           return (_self.projectLists = projects);
         }
@@ -80,10 +94,10 @@ export class DashboardPage implements OnInit {
       });
   }
 
-  convertStringToNum(value) {
-    let num = value.split('%');
-    return toNumber(num[0]);
-  }
+  // convertStringToNum(value) {
+  //   let num = value.split('%');
+  //   return toNumber(num[0]);
+  // }
 
   sortData(data) {
     this.sorOrderStatus = !this.sorOrderStatus;
@@ -111,8 +125,15 @@ export class DashboardPage implements OnInit {
     });
     await modal.present();
     const {
-      data: { selectedDashboardWidgets },
+      data: { selectedDashboardWidgets, shouldResetDashboardWidgetPermission },
     } = await modal.onWillDismiss();
+    if (
+      shouldResetDashboardWidgetPermission ||
+      (isNotNullAndUndefined(selectedDashboardWidgets) &&
+        (isNotEmptyArray(selectedDashboardWidgets) ||
+          isEmptyArray(selectedDashboardWidgets)))
+    )
+      this.getDashboardWidgetPermission();
   }
 
   async openStatusPopover(ev: any, type, task?) {
@@ -133,5 +154,21 @@ export class DashboardPage implements OnInit {
           : (task.taskManagerUsers = result.data);
       }
     });
+  }
+
+  getDashboardWidgetPermission() {
+    const _self = this;
+    _self.isProjectTrackerWidgetPermission =
+      _self.localSettingsSrv.getProjectTrackerWidgetPermissionValue();
+    _self.isTaskManagerWidgetPermission =
+      _self.localSettingsSrv.getTaskManagerWidgetPermissionValue();
+    _self.isFutureProjectsWidgetPermission =
+      _self.localSettingsSrv.getFutureProjectsWidgetPermissionValue();
+    _self.isOfferManagementWidgetPermission =
+      _self.localSettingsSrv.getOfferManagementWidgetPermissionValue();
+    _self.isOrderManagementWidgetPermission =
+      _self.localSettingsSrv.getOrderManagementWidgetPermissionValue();
+    _self.isRiskAssesssmentWidgetPermission =
+      _self.localSettingsSrv.getRiskAssessmentWidgetPermissionValue();
   }
 }

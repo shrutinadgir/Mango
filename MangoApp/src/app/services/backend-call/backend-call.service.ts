@@ -12,7 +12,7 @@ export class BackendCallService {
     const _self = this;
     let urlParams = new HttpParams();
     return _self.http
-      .get<any>(`${ApiUrls.getProjects}`, { params: urlParams })
+      .get<any>(`${ApiUrls.getProjectWidget}`, { params: urlParams })
       .toPromise();
   }
 
