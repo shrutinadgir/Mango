@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { isNotEmptyArray } from 'src/app/utilities/utils';
-import { LocalSettingsService } from './../../services/local-settings/local-settings.service';
+import { LocalSettingsService } from '../../services/local-settings/local-settings.service';
 
 @Component({
   selector: 'app-alert-modal',
@@ -84,6 +84,14 @@ export class AlertModalPage implements OnInit {
           else _widget.isChecked = data;
         }
       })
+    }
+  }
+
+  changeWidgetCheckedValue(item) {
+    const _self = this;
+    if (isNotEmptyArray(_self.dashboardCustomizationValue)) {
+      let matchedVal = _self.dashboardCustomizationValue.find(_p => _p.val === item.val);
+      if (matchedVal) matchedVal.isChecked = !matchedVal.isChecked;
     }
   }
 

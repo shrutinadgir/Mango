@@ -15,10 +15,6 @@ const routes: Routes = [
     path: 'login',
     loadChildren: () => import('./pages/login/login.module').then(m => m.LoginPageModule)
   },
-  {
-    path: 'alert-modal',
-    loadChildren: () => import('./pages/alert-modal/alert-modal.module').then(m => m.AlertModalPageModule)
-  },
 
 ];
 
