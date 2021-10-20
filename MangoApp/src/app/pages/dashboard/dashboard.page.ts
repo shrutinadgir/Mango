@@ -3,8 +3,10 @@ import { ModalController } from '@ionic/angular';
 import { AlertModalPage } from '../alert-modal/alert-modal.page';
 import { BackendCallService } from 'src/app/services/backend-call/backend-call.service';
 import { LoadingController } from '@ionic/angular';
-import { isNotEmptyArray, toNumber } from 'src/app/utilities/utils';
+import { isEmptyArray, isNotEmptyArray, isNotNullAndUndefined, toNumber } from 'src/app/utilities/utils';
 import { SortingPipe } from 'src/app/pipes/sorting.pipe';
+import { LocalSettingsService } from './../../services/local-settings/local-settings.service';
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.page.html',
@@ -14,15 +16,24 @@ export class DashboardPage implements OnInit {
   selectedTabTitle: string = 'DashBoard';
   projectLists: Array<[]> = [];
   sorOrderStatus: boolean = false;
+  isProjectTrackerWidgetPermission: boolean = true;
+  isTaskManagerWidgetPermission: boolean = false;
+  isFutureProjectsWidgetPermission: boolean = false;
+  isOfferManagementWidgetPermission: boolean = false;
+  isOrderManagementWidgetPermission: boolean = false;
+  isRiskAssesssmentWidgetPermission: boolean = false;
+
   constructor(
     public modalController: ModalController,
     public backendService: BackendCallService,
     public loadingController: LoadingController,
-    public sortPipe: SortingPipe
+    public sortPipe: SortingPipe,
+    public localSettingsSrv: LocalSettingsService
   ) { }
 
   ngOnInit() {
     this.getProjects();
+    this.getDashboardWidgetPermission();
   }
 
   sideNavSelectedTab(tab) {
@@ -90,6 +101,18 @@ export class DashboardPage implements OnInit {
       componentProps: props,
     });
     await modal.present();
-    const { data: { selectedDashboardWidgets } } = await modal.onWillDismiss();
+    const { data: { selectedDashboardWidgets, shouldResetDashboardWidgetPermission } } = await modal.onWillDismiss();
+    if (shouldResetDashboardWidgetPermission || (isNotNullAndUndefined(selectedDashboardWidgets) && (isNotEmptyArray(selectedDashboardWidgets) || isEmptyArray(selectedDashboardWidgets)))) this.getDashboardWidgetPermission();
   }
+
+  getDashboardWidgetPermission() {
+    const _self = this;
+    _self.isProjectTrackerWidgetPermission = _self.localSettingsSrv.getProjectTrackerWidgetPermissionValue();
+    _self.isTaskManagerWidgetPermission = _self.localSettingsSrv.getTaskManagerWidgetPermissionValue();
+    _self.isFutureProjectsWidgetPermission = _self.localSettingsSrv.getFutureProjectsWidgetPermissionValue();
+    _self.isOfferManagementWidgetPermission = _self.localSettingsSrv.getOfferManagementWidgetPermissionValue();
+    _self.isOrderManagementWidgetPermission = _self.localSettingsSrv.getOrderManagementWidgetPermissionValue();
+    _self.isRiskAssesssmentWidgetPermission = _self.localSettingsSrv.getRiskAssessmentWidgetPermissionValue();
+  }
+
 }
