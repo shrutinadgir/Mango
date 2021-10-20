@@ -1,0 +1,34 @@
+<ion-content>
+  <div class="widget-container">
+    <ion-grid>
+      <ion-row class="close-row">
+        <ion-col (click)="close()" class="close-col">
+          <img src="../../../assets/icon/cancel.svg">
+        </ion-col>
+      </ion-row>
+      <ion-row class="header-row">
+        <ion-col>
+          <div class="ion-text-start header-title">
+            <span *ngIf="type=='assign'">Assign/Edit User</span>
+            <span *ngIf="type=='edit'">Edit Task</span>
+            <span *ngIf="type=='delete'">Delete Task</span>
+          </div>
+        </ion-col>
+
+      </ion-row>
+      <ion-searchbar mode='ios' type="text" debounce="500" (ionChange)="getItems($event)"></ion-searchbar>
+      <ion-list *ngIf="isItemAvailable" class="list-view">
+        <ion-item *ngFor="let item of dummyData" lines='none' style="background: none;">
+          <img [src]='item.thumbnailUrl' style="width: 20px; border-radius: 50%;" />
+          <ion-label>{{item.name}}</ion-label>
+          <ion-checkbox slot="start" (click)="addUser(item)" value="{{ item.checked }}"></ion-checkbox>
+        </ion-item>
+      </ion-list>
+      <ion-row class="button-row">
+        <button position="bottom" *ngIf="type=='assign'" (click)='assignUser("assign")'>Assign</button>
+        <button position="bottom" *ngIf="type=='edit'" (click)='assignUser("edit")'>Edit</button>
+        <button position="bottom" *ngIf="type=='delete'" (click)='assignUser("delete")'>Delete</button>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>

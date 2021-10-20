@@ -1,0 +1,41 @@
+.list-view {
+  background-color: transparent;
+  ion-item {
+    --background: transparent;
+    border-bottom: white 1px solid;
+    ion-label {
+      font-size: 12px;
+      font-family: Montserrat;
+      font-weight: 600;
+      padding-left: 5px;
+      letter-spacing: 1.4px;
+      text-align: left;
+    }
+    img {
+      width: 14px;
+    }
+  }
+}
+.blur-container {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(13px);
+  background-color: #ffffff94;
+  border-radius: 12px;
+  border: 1px solid white;
+  display: flex;
+}
+::ng-deep {
+  .my-custom-class {
+    .popover-content {
+      background-color: transparent !important;
+      width: 201px;
+    }
+    ion-item {
+      --min-height: 14px !important;
+    }
+  }
+}

@@ -7,7 +7,8 @@
       </ion-col>
       <ion-col size-xs='12' size-sm='5' size-md="5" size-lg="5">
         <div class="form-design">
-          <ion-button style="margin-bottom: 18px;" expand="block" shape="round" class="btn" (click)='loginWithSSO()'>Log in Via SSO</ion-button>
+          <ion-button style="margin-bottom: 18px;" expand="block" shape="round" class="btn" (click)='loginWithSSO()'>Log
+            in Via SSO</ion-button>
           <h2>Or</h2>
           <span>
             Login with Email
@@ -21,7 +22,7 @@
             <ion-label position="stacked">Password</ion-label>
             <ion-input type='password' [(ngModel)]='formData.password'></ion-input>
           </ion-item>
-          <ion-button expand="block" shape="round" class="log-btn" [routerLink]="['/home']" (click)='login()'>Log in
+          <ion-button expand="block" shape="round" class="log-btn" (click)='login()'>Log in
           </ion-button>
           <ion-item lines='none' class="forget-pass">
             <ion-label slot="end">Forget Password?</ion-label>

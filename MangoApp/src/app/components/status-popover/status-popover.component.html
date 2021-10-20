@@ -1,0 +1,33 @@
+<div class="blur-container"></div>
+<ion-list class="list-view" *ngIf='type=="addUser"'>
+  <ion-item lines='none' button (click)='selectType("assign")'>
+    <img src='../../../assets/icon/Add User.svg' />
+    <ion-label>
+      Assign/Edit User
+    </ion-label>
+  </ion-item>
+  <ion-item button lines='none' (click)='selectType("edit")'>
+    <img src='../../../assets/icon/Dashboard customise.svg' />
+    <ion-label>Edit task</ion-label>
+  </ion-item>
+  <ion-item lines='none' button (click)='selectType("delete")'>
+    <img src='../../../assets/icon/Delete.svg' />
+    <ion-label>Delete Task</ion-label>
+  </ion-item>
+</ion-list>
+<ion-list class="list-view" *ngIf='type=="ChangeStatus"'>
+  <ion-item lines='none' button (click)='selectType("Yet To Start")'>
+    <ion-label>
+      Yet To Start
+    </ion-label>
+  </ion-item>
+  <ion-item button lines='none' (click)='selectType("in-progress")'>
+    <ion-label>In Progress</ion-label>
+  </ion-item>
+  <ion-item lines='none' button (click)='selectType("On Hold")'>
+    <ion-label>On Hold</ion-label>
+  </ion-item>
+  <ion-item lines='none' button (click)='selectType("Resolved")'>
+    <ion-label>Resolved</ion-label>
+  </ion-item>
+</ion-list>
