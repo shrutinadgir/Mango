@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { ModalController, PopoverController } from '@ionic/angular';
 import { AlertModalPage } from '../alert-modal/alert-modal.page';
 import { BackendCallService } from 'src/app/services/backend-call/backend-call.service';
 import { LoadingController } from '@ionic/angular';
 import { isNotEmptyArray, toNumber } from 'src/app/utilities/utils';
 import { SortingPipe } from 'src/app/pipes/sorting.pipe';
+import { StatusPopoverComponent } from 'src/app/components/status-popover/status-popover.component';
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.page.html',
@@ -14,15 +16,19 @@ export class DashboardPage implements OnInit {
   selectedTabTitle: string = 'DashBoard';
   projectLists: Array<[]> = [];
   sorOrderStatus: boolean = false;
+  tasksManagersData: Array<[]> = [];
+  taskManagerUsers: any = [];
   constructor(
     public modalController: ModalController,
     public backendService: BackendCallService,
     public loadingController: LoadingController,
-    public sortPipe: SortingPipe
-  ) { }
+    public sortPipe: SortingPipe,
+    public popoverController: PopoverController
+  ) {}
 
   ngOnInit() {
     this.getProjects();
+    this.getTaskManagerData();
   }
 
   sideNavSelectedTab(tab) {
@@ -60,6 +66,20 @@ export class DashboardPage implements OnInit {
       });
   }
 
+  getTaskManagerData() {
+    this.backendService
+      .getTaskManagerData()
+      .then((data) => {
+        const tasks = data.tasks;
+        if (isNotEmptyArray(tasks)) {
+          return (this.tasksManagersData = tasks);
+        }
+      })
+      .catch((err) => {
+        console.log('getting error for fetching projects lists:', err);
+      });
+  }
+
   convertStringToNum(value) {
     let num = value.split('%');
     return toNumber(num[0]);
@@ -90,6 +110,28 @@ export class DashboardPage implements OnInit {
       componentProps: props,
     });
     await modal.present();
-    const { data: { selectedDashboardWidgets } } = await modal.onWillDismiss();
+    const {
+      data: { selectedDashboardWidgets },
+    } = await modal.onWillDismiss();
+  }
+
+  async openStatusPopover(ev: any, type, task?) {
+    let props = { type };
+    const popover = await this.popoverController.create({
+      component: StatusPopoverComponent,
+      cssClass: 'my-custom-class',
+      event: ev,
+      translucent: true,
+      componentProps: props,
+      showBackdrop: false,
+    });
+    await popover.present();
+    await popover.onDidDismiss().then((result) => {
+      if (task && result.data !== undefined) {
+        typeof result.data === 'string'
+          ? (task.status = result.data)
+          : (task.taskManagerUsers = result.data);
+      }
+    });
   }
 }

@@ -74,5 +74,65 @@
         </div>
       </div>
     </ion-card>
+
+    <ion-card *ngIf="selectedTabTitle == 'DashBoard'">
+      <ion-card-header>
+        <ion-card-subtitle class="dash-cont-title">Task Manager
+          <span class="con-icons">
+            <img src="../../../assets/images/Box.png" class="con-icons-align">
+            <img src="../../../assets/images/Add.svg" class="con-icons-sea">
+          </span>
+        </ion-card-subtitle>
+      </ion-card-header>
+      <div class="view">
+        <div class="wrapper">
+          <table class="table">
+            <thead>
+              <tr>
+                <th class="sticky-col task-first-col" style="margin-left: 5px;">Title
+                  <img (click)='sortData(projectLists)' src="/assets/images/Sorting.svg" />
+                </th>
+                <th>Task Description</th>
+                <th>Assigned Staff </th>
+                <th>Open Chat</th>
+                <th>Open Mail</th>
+                <th>Blocker</th>
+                <th>Due Date</th>
+                <th>Status</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let task of tasksManagersData ; let i = index">
+                <td class="sticky-col task-first-col" style="color: #083A81; font-weight: bold;cursor: pointer">
+                  {{task.Task_Title}}</td>
+                <td>{{task.Task_Description}}</td>
+                <td>
+                  <div class="task-users-container">
+                    <img *ngFor='let user of task?.taskManagerUsers;let iconIndex = index' [src]='user.thumbnailUrl'
+                      class="task-users-icons" [style]="'left:'+ iconIndex*10+'px'" />
+                  </div>
+                </td>
+                <td><img class="task-icons" src="../../../assets/icon/outlook.svg"></td>
+                <td><img class="task-icons" src="../../../assets/icon/teams.svg"></td>
+                <td>{{task.Task_Type}}</td>
+                <td>{{task.Task_Due_Dt | date : 'shortDate'}}</td>
+                <td><button class="task-status"
+                    [ngStyle]="{'background-color':task.status === 'in-progress' ? '#37D9BF' : task.status === 'on Hold' ? '#F9DA7C' : '#97B5FA'}">
+                    {{task.status}}</button>
+                  <ion-icon class="task-status-icon" name="caret-down-outline"
+                    (click)="openStatusPopover($event,'ChangeStatus',task)"></ion-icon>
+                </td>
+                <td style="padding: 0px !important;">
+                  <!-- <ion-icon (click)="openStatusPopover($event,'addUser')" name="ellipsis-vertical-outline"></ion-icon> -->
+                  <img class="task-more-icon" src="../../../assets/icon/more.svg"
+                    (click)="openStatusPopover($event,'addUser',task)">
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </ion-card>
   </div>
 </ion-content>

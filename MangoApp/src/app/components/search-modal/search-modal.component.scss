@@ -1,0 +1,101 @@
+::ng-deep {
+  .my-custom-class {
+    .modal-wrapper {
+      border-radius: 40px !important;
+      width: 1078px;
+      border: 1px solid #ffffff;
+      background-color: #ffffff6b; //#ffffff69;
+    }
+  }
+}
+ion-content {
+  --background: transparent;
+  --overflow: hidden;
+  --box-shadow: 0px 16px 20px #0000001a;
+  .widget-container {
+    ion-grid {
+      .close-row {
+        float: right;
+        padding: 27px;
+      }
+      .close-row:hover {
+        cursor: pointer;
+      }
+      .header-row {
+        padding-top: 40px;
+        .header-title {
+          padding-left: 3px;
+          margin-left: 30px;
+          // width: 237px;
+          height: 32px;
+          font-family: Montserrat;
+          font-size: 26px;
+          font-weight: 600;
+          letter-spacing: 2.6px;
+          color: #083a81;
+          opacity: 1;
+        }
+      }
+
+      .button-row {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        padding: 27px;
+        button {
+          font-family: Montserrat;
+          font-weight: 600;
+          // background: #7c7c7cb3 0% 0% no-repeat padding-box;
+          background: transparent
+            linear-gradient(248deg, #00a4e0 0%, #083a81 100%) 0% 0% no-repeat
+            padding-box;
+          border-radius: 15px;
+          opacity: 1;
+          color: white;
+          width: 140px;
+          height: 44px;
+          margin-left: 10px;
+          font-size: 14px;
+          letter-spacing: 0px;
+        }
+      }
+    }
+  }
+  ::ng-deep {
+    ion-searchbar {
+      margin-top: 40px;
+      padding-left: 30px;
+      --background: #ebefff 0% 0% no-repeat padding-box;
+      width: 310px;
+      height: 44px;
+      input {
+        border: 1px solid #ffffff;
+      }
+      .searchbar-input-container.sc-ion-searchbar-ios {
+        height: 36px;
+        border: 1px solid #ffffff !important;
+        border-radius: 10px !important;
+      }
+    }
+  }
+  ion-item {
+    --ion-item-background: transparent;
+    --background: #ebefff 0% 0% no-repeat padding-box;
+    border: 1px solid white;
+    // margin: 20px;
+    border-radius: 10px;
+    --min-height: 14px;
+  }
+  .list-view {
+    background: none;
+    max-width: 280px;
+    padding: 4px;
+    margin-left: 22px;
+    ion-label {
+      padding-left: 4px;
+    }
+    ion-checkbox {
+      margin: 4px;
+    }
+  }
+}

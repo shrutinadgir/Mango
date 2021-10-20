@@ -54,7 +54,7 @@ const isIE =
         protectedResourceMap: new Map([
           ['https://graph.microsoft.com/v1.0/me', ['user.read']],
           [
-            'https://sldemo.azure-api.net/projects',
+            'https://sldemo.azure-api.net/',
             ['api://9fea343a-012d-48e6-b7e8-f8de5f9e2860/.default'],
           ],
         ]),
