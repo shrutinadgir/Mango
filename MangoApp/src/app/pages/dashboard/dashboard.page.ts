@@ -25,9 +25,6 @@ export class DashboardPage implements OnInit {
   isOfferManagementWidgetPermission: boolean = false;
   isOrderManagementWidgetPermission: boolean = false;
   isRiskAssesssmentWidgetPermission: boolean = false;
-  PlantimeHours: any;
-  ActtimeHours: any;
-  realvalue: any;
 
   constructor(
     public modalController: ModalController,
