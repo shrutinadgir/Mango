@@ -59,8 +59,8 @@
                 <td data-valuetype="custName">{{project.customer_name}}</td>
                 <td data-valuetype="accName">{{project.Account_name}}</td>
                 <td data-valuetype="projManagerName">{{project.Project_managers_name}}</td>
-                <td data-valuetype="projStartDate">{{project.Start_dt | date : 'shortDate'}}</td>
-                <td data-valuetype="projectEndDate">{{project.End_dt | date : 'shortDate'}}</td>
+                <td data-valuetype="projStartDate">{{project.Start_dt | date : 'dd/MM/YYYY'}}</td>
+                <td data-valuetype="projectEndDate">{{project.End_dt | date : 'dd/MM/YYYY'}}</td>
                 <td data-valuetype="projNumOfMachine">{{project.Num_machines}}</td>
                 <td data-valuetype="projRegion">{{project.Region}}</td>
                 <td data-valuetype="projHours" style="position: relative;"><progress value={{project.timeHoursInPer}}
@@ -130,7 +130,7 @@
                 <td><img class="task-icons" src="../../../assets/icon/outlook.svg"></td>
                 <td><img class="task-icons" src="../../../assets/icon/teams.svg"></td>
                 <td>{{task.Task_Type}}</td>
-                <td>{{task.Task_Due_Dt | date : 'shortDate'}} <label>
+                <td>{{task.Task_Due_Dt | date : 'dd/MM/YYYY'}} <label>
                     <input type="date">
                     <button class="buticon" id="calendar_text">
                       <img src="../../../assets/images/arrow.png">

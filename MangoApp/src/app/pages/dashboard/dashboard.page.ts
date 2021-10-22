@@ -39,7 +39,7 @@ export class DashboardPage implements OnInit {
     public sortPipe: SortingPipe,
     public popoverController: PopoverController,
     public localSettingsSrv: LocalSettingsService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.getProjects();
@@ -128,6 +128,7 @@ export class DashboardPage implements OnInit {
         ? 'mango-dashboard-customization-modal'
         : 'mango-alert-modal',
       backdropDismiss: false,
+      showBackdrop: false,
       componentProps: props,
     });
     await modal.present();
