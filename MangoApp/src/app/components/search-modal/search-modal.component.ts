@@ -109,4 +109,10 @@ export class SearchModalComponent implements OnInit {
       })
       .then(() => (this.users = []));
   }
+
+  removeUser(data) {
+    console.log(data);
+    this.dummyData.find((item) => item.id == data.id).checked = false;
+    this.isItemAvailable = false;
+  }
 }

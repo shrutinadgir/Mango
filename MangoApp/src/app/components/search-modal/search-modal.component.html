@@ -16,7 +16,8 @@
         </ion-col>
 
       </ion-row>
-      <ion-searchbar mode='ios' type="text" debounce="500" placeholder="Search User" (ionChange)="getItems($event)">
+      <ion-searchbar debounce="500" mode='ios' placeholder="Search User" [showCancelButton]="'never'"
+        [showClearButton]="'never'" (ionChange)="getItems($event)">
       </ion-searchbar>
       <ion-list *ngIf="isItemAvailable" class="list-view">
         <ion-item *ngFor="let item of dummyData" lines='none' style="background: none;">
@@ -29,7 +30,8 @@
       <div class="select-user-main">
         <h2>Selected User</h2>
         <span *ngFor="let user of dummyData">
-          <ion-button class="select-user" shape="round" fill="clear" size="small" *ngIf="user.checked">
+          <ion-button (click)='removeUser(user)' class="select-user" shape="round" fill="clear" size="small"
+            *ngIf="user.checked">
             {{user.name}}&nbsp;&nbsp;<ion-icon slot="end" name='close-outline'>
             </ion-icon>
           </ion-button>
