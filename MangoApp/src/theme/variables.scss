@@ -248,7 +248,9 @@ ion-header {
   .modal-wrapper {
     width: 50%;
     height: 50%;
-    background: transparent linear-gradient(251deg, #e4e7f6 0%, #e0eaf6 52%, #c3d9f6 100%) 0% 0% no-repeat padding-box;
+    background: transparent
+      linear-gradient(251deg, #e4e7f6 0%, #e0eaf6 52%, #c3d9f6 100%) 0% 0%
+      no-repeat padding-box;
     box-shadow: 0px 16px 20px #0000001a;
     border: 1.5px solid #ffffff;
     border-radius: 40px;
@@ -267,9 +269,9 @@ ion-header {
   .modal-wrapper {
     width: 1078px;
     height: 556px;
-    background: #EBEFFF 0% 0% no-repeat padding-box;
-    box-shadow: 0px 16px 20px #0000001A;
-    border: 1.5px solid #FFFFFF;
+    background: #ebefff 0% 0% no-repeat padding-box;
+    box-shadow: 0px 16px 20px #0000001a;
+    border: 1.2px solid #ffffff;
     border-radius: 40px;
     opacity: 1;
     backdrop-filter: blur(29px);
@@ -282,9 +284,14 @@ ion-button {
 }
 
 ion-checkbox {
-  --border-color : #7D98BF;
-  --background : #EBEFFF;
-  --background-checked:#EBEFFF;
+  --border-color: #7d98bf;
+  --background: #ebefff;
+  --background-checked: #ebefff;
   --checkmark-color: #083a81;
-  --border-color-checked:#7D98BF;
+  --border-color-checked: #7d98bf;
+}
+ion-searchbar ion-icon {
+  right: 16px !important;
+  left: auto !important;
+  color: #7d98bf;
 }

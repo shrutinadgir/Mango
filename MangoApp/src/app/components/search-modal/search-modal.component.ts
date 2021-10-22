@@ -88,8 +88,9 @@ export class SearchModalComponent implements OnInit {
       this.isItemAvailable = false;
     }
   }
-  addUser(data) {
-    this.users.push(data);
+  addUser(event, data) {
+    data.checked = event.detail.checked;
+    this.dummyData.find((item) => item.id == data.id).checked = data.checked;
   }
   close() {
     this.modalController.dismiss({
@@ -98,6 +99,9 @@ export class SearchModalComponent implements OnInit {
     });
   }
   assignUser(type) {
+    this.dummyData.filter((each: any) => {
+      each.checked ? this.users.push(each) : '';
+    });
     this.modalController
       .dismiss({
         dismissed: true,

@@ -25,7 +25,7 @@
   backdrop-filter: blur(13px);
   background-color: #ffffff94;
   border-radius: 12px;
-  border: 1px solid white;
+  border: 1.2px solid white;
   display: flex;
 }
 ::ng-deep {
@@ -33,9 +33,14 @@
     .popover-content {
       background-color: transparent !important;
       width: 201px;
+      left: calc(887px - var(--ion-safe-area-right, 0px));
+      // left: 885px !important;
     }
     ion-item {
       --min-height: 14px !important;
+      .item-detail-icon {
+        display: none !important;
+      }
     }
   }
 }
