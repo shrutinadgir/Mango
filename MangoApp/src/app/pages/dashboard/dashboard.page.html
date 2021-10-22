@@ -8,7 +8,7 @@
     <ion-grid>
       <ion-row>
         <ion-col size="4">
-          <ion-title (click)="openAlertModal()" class="hov-label">{{selectedTabTitle}}</ion-title>
+          <ion-title>{{selectedTabTitle}}</ion-title>
         </ion-col>
         <ion-col size="7" style="text-align: end;" class="hov-label">
           <span> <img src="../../../assets/images/Open Fiori.svg" class="source"><label class="con-style">Open Fiori
@@ -68,8 +68,8 @@
                   {{project.timeHoursInPer}}%
                   <label class="tooltip"><input type="checkbox"><span>Time (in hours)<br>
                       Actual Value &#160;&#160;&#160;&#160;&#160;
-                      {{project.Actual_Time_hours}}<br>
-                      Planned Value &#160;&#160; {{project.Planned_Time_Hours}}
+                      {{project.Actual_Time_hours}} Hrs<br>
+                      Planned Value &#160;&#160; {{project.Planned_Time_Hours}} Hrs
                     </span></label>
                 </td>
                 <td data-valuetype="projRevenueCurrency"><progress id="file" value={{project.Revenue_currency}}
