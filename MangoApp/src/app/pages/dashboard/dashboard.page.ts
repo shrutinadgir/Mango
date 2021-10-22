@@ -135,6 +135,7 @@ export class DashboardPage implements OnInit {
       translucent: true,
       componentProps: props,
       showBackdrop: false,
+      // mode: 'ios',
     });
     await popover.present();
     await popover.onDidDismiss().then((result) => {

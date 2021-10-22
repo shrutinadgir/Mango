@@ -137,7 +137,7 @@
                     </button>
                   </label></td>
                 <td><button class="task-status"
-                    [ngStyle]="{'background-color':task.status === 'in-progress' ? '#37D9BF' : task.status === 'on Hold' ? '#F9DA7C' : '#97B5FA'}">
+                    [ngStyle]="{'background-color':task.status === 'in-progress' ? '#73D6BC' : task.status === 'On Hold' ? '#F2DB7C' :task.status === 'Resolved'? '#97B5FA' :task.status === 'Completed'? '#2dd36f':task.status === 'Blocked'? '#DB303B':'#9FB4FA'}">
                     {{task.status}}</button>
                   <ion-icon class="task-status-icon" name="caret-down-outline"
                     (click)="openStatusPopover($event,'ChangeStatus',task)"></ion-icon>
