@@ -3,7 +3,13 @@ import { ModalController, PopoverController } from '@ionic/angular';
 import { AlertModalPage } from 'src/app/components/alert-modal/alert-modal.page';
 import { BackendCallService } from 'src/app/services/backend-call/backend-call.service';
 import { LoadingController } from '@ionic/angular';
-import { doubleDecimal, isEmptyArray, isNotEmptyArray, isNotNullAndUndefined, toNumber } from 'src/app/utilities/utils';
+import {
+  doubleDecimal,
+  isEmptyArray,
+  isNotEmptyArray,
+  isNotNullAndUndefined,
+  toNumber,
+} from 'src/app/utilities/utils';
 import { SortingPipe } from 'src/app/pipes/sorting.pipe';
 import { StatusPopoverComponent } from 'src/app/components/status-popover/status-popover.component';
 import { LocalSettingsService } from './../../services/local-settings/local-settings.service';
@@ -33,7 +39,7 @@ export class DashboardPage implements OnInit {
     public sortPipe: SortingPipe,
     public popoverController: PopoverController,
     public localSettingsSrv: LocalSettingsService
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.getProjects();
@@ -60,7 +66,12 @@ export class DashboardPage implements OnInit {
         const { projects } = data;
         if (isNotEmptyArray(projects)) {
           projects.forEach((_p) => {
-            if (_p.Actual_Time_hours && _p.Planned_Time_Hours) _p.timeHoursInPer = doubleDecimal(toNumber(((_p.Actual_Time_hours / _p.Planned_Time_Hours) * 100) / 10))
+            if (_p.Actual_Time_hours && _p.Planned_Time_Hours)
+              _p.timeHoursInPer = doubleDecimal(
+                toNumber(
+                  ((_p.Actual_Time_hours / _p.Planned_Time_Hours) * 100) / 10
+                )
+              );
           });
           return (_self.projectLists = projects);
         }
@@ -89,11 +100,17 @@ export class DashboardPage implements OnInit {
   //   return toNumber(num[0]);
   // }
 
-  sortData(data) {
+  sortData(data, widgetName?) {
     this.sorOrderStatus = !this.sorOrderStatus;
-    this.sorOrderStatus == true
-      ? this.sortPipe.transform(data, 'project_name', 'asc')
-      : this.sortPipe.transform(data, 'project_name', 'dsc');
+    if (widgetName === 'TaskManager') {
+      this.sorOrderStatus == true
+        ? this.sortPipe.transform(data, 'Task_Title', 'asc')
+        : this.sortPipe.transform(data, 'Task_Title', 'dsc');
+    } else {
+      this.sorOrderStatus == true
+        ? this.sortPipe.transform(data, 'project_name', 'asc')
+        : this.sortPipe.transform(data, 'project_name', 'dsc');
+    }
   }
 
   openDashboardCustomization(isDashboardCustomize) {
