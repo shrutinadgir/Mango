@@ -1,5 +1,8 @@
-<ion-content fullscreen="true" no-bounce>
+<ion-header>
   <app-header></app-header>
+</ion-header>
+<ion-content fullscreen="true" no-bounce>
+  <!-- <app-header></app-header> -->
   <app-side-nav (_selectedTab)="sideNavSelectedTab($event)"></app-side-nav>
   <div class="title">
     <ion-grid>
@@ -28,6 +31,7 @@
           </span>
         </ion-card-subtitle>
       </ion-card-header>
+
       <div class="view">
         <div class="wrapper">
           <table class="table">
@@ -52,28 +56,31 @@
               <tr *ngFor="let project of projectLists">
                 <td class="sticky-col first-col" style="color: #083A81; font-weight: bold;cursor: pointer">
                   {{project.project_id}}</td>
-                <td>{{project.customer_name}}</td>
-                <td>{{project.Account_name}}</td>
-                <td>{{project.Project_managers_name}}</td>
-                <td>{{project.Start_dt | date : 'shortDate'}}</td>
-                <td>{{project.End_dt | date : 'shortDate'}}</td>
-                <td>{{project.Num_machines}}</td>
-                <td>{{project.Region}}</td>
-                <td style="position: relative;"><progress value={{project.Time_hours}} max="100"></progress> <label
-                    class="tooltip">
-                    {{project.Time_hours}}% <input type="checkbox"><span>Time (in hours)<br>
+                <td data-valuetype="custName">{{project.customer_name}}</td>
+                <td data-valuetype="accName">{{project.Account_name}}</td>
+                <td data-valuetype="projManagerName">{{project.Project_managers_name}}</td>
+                <td data-valuetype="projStartDate">{{project.Start_dt | date : 'shortDate'}}</td>
+                <td data-valuetype="projectEndDate">{{project.End_dt | date : 'shortDate'}}</td>
+                <td data-valuetype="projNumOfMachine">{{project.Num_machines}}</td>
+                <td data-valuetype="projRegion">{{project.Region}}</td>
+                <td data-valuetype="projHours" style="position: relative;"><progress value={{project.timeHoursInPer}}
+                    max="100"></progress>
+                  {{project.timeHoursInPer}}%
+                  <label class="tooltip"><input type="checkbox"><span>Time (in hours)<br>
                       Actual Value &#160;&#160;&#160;&#160;&#160;
                       {{project.Actual_Time_hours}}<br>
                       Planned Value &#160;&#160; {{project.Planned_Time_Hours}}
                     </span></label>
                 </td>
-                <td><progress id="file" value={{project.Revenue_currency}} max="10000"></progress>
-                  {{project.Revenue_currency}}%</td>
-                <td><progress id="file" value={{project.Cost_currency}} max="10000"></progress>
-                  {{project.Cost_currency}}
+                <td data-valuetype="projRevenueCurrency"><progress id="file" value={{project.Revenue_currency}}
+                    max="10000"></progress>
+                  {{project.Revenue_currency/100}}%</td>
+                <td data-valuetype="projCostCurrency"><progress id="file" value={{project.Cost_currency}}
+                    max="10000"></progress>
+                  {{project.Cost_currency/100}}%
                 </td>
-                <td><button
-                    [ngStyle]="{'background-color':project.status === 'in-progress' ? '#37D9BF' : project.status === 'on Hold' ? '#F9DA7C' : '#97B5FA'}">
+                <td data-valuetype="projStatus"><button
+                    [ngStyle]="{'background-color':project.status === 'in-progress' ? '#37D9BF' : project.status === 'on Hold' ? '#F9DA7C' : project.status === 'blocked' ? '#f78686' :'#97B5FA'}">
                     {{project.status}}</button></td>
                 <span><img class="moreicon" src="../../../assets/icon/more.svg"></span>
             </tbody>

@@ -37,7 +37,7 @@
           *ngFor="let item of dashboardCustomizationValue">
           <ion-row>
             <ion-col size-xs='1' size-md="1" style="padding-top: 40px;">
-              <ion-checkbox [(ngModel)]="item.isChecked"></ion-checkbox>
+              <ion-checkbox checked={{item.isChecked}} (ionChange)="changeWidgetCheckedValue(item)"></ion-checkbox>
             </ion-col>
             <ion-col size-xs='11' size-md="11">
               <ion-card class="content-card-container">

@@ -1,14 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController, PopoverController } from '@ionic/angular';
-import { AlertModalPage } from '../alert-modal/alert-modal.page';
+import { AlertModalPage } from 'src/app/components/alert-modal/alert-modal.page';
 import { BackendCallService } from 'src/app/services/backend-call/backend-call.service';
 import { LoadingController } from '@ionic/angular';
-import {
-  isEmptyArray,
-  isNotEmptyArray,
-  isNotNullAndUndefined,
-  toNumber,
-} from 'src/app/utilities/utils';
+import { doubleDecimal, isEmptyArray, isNotEmptyArray, isNotNullAndUndefined, toNumber } from 'src/app/utilities/utils';
 import { SortingPipe } from 'src/app/pipes/sorting.pipe';
 import { StatusPopoverComponent } from 'src/app/components/status-popover/status-popover.component';
 import { LocalSettingsService } from './../../services/local-settings/local-settings.service';
@@ -38,7 +33,7 @@ export class DashboardPage implements OnInit {
     public sortPipe: SortingPipe,
     public popoverController: PopoverController,
     public localSettingsSrv: LocalSettingsService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.getProjects();
@@ -65,12 +60,7 @@ export class DashboardPage implements OnInit {
         const { projects } = data;
         if (isNotEmptyArray(projects)) {
           projects.forEach((_p) => {
-            // if (isNaN(_p.Cost_dollars))
-            //   _p.Cost_dollars = _self.convertStringToNum(_p.Cost_dollars);
-            // if (isNaN(_p.Revenue_dollars))
-            //   _p.Revenue_dollars = _self.convertStringToNum(_p.Revenue_dollars);
-            // if (isNaN(_p.Time_hours))
-            //   _p.Time_hours = _self.convertStringToNum(_p.Time_hours);
+            if (_p.Actual_Time_hours && _p.Planned_Time_Hours) _p.timeHoursInPer = doubleDecimal(toNumber(((_p.Actual_Time_hours / _p.Planned_Time_Hours) * 100) / 10))
           });
           return (_self.projectLists = projects);
         }

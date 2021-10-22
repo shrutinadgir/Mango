@@ -15,7 +15,23 @@ ion-content {
     #e4e7f6
   );
 }
-
+ion-header {
+  background: linear-gradient(
+    to right,
+    #c3d9f6,
+    #c8dcf6,
+    #cee0f6,
+    #d3e3f6,
+    #d9e6f6,
+    #dce7f6,
+    #dee8f6,
+    #e1e9f6,
+    #e2e9f6,
+    #e2e8f6,
+    #e3e8f6,
+    #e4e7f6
+  );
+}
 ion-card {
   margin-top: 2%;
   opacity: 0.9;
@@ -105,7 +121,7 @@ table {
     position: relative;
     white-space: nowrap;
     overflow-x: scroll;
-    // width: 1%;
+    width: 100%;
   }
   .wrapper::-webkit-scrollbar {
     height: 8px; /* height of horizontal scrollbar ← You're missing this */
@@ -166,7 +182,6 @@ table {
     font-weight: 600;
     font-size: 10px;
     border-bottom: 1px solid #d8dee0;
-    width: 1%;
   }
   progress {
     color: #50cad0;
@@ -194,12 +209,12 @@ table {
   }
 
   /* Chrome */
-  progress[value="100"]::-webkit-progress-value {
+  progress[value="10000"]::-webkit-progress-value {
     background: #f00;
   }
 
   /* Firefox */
-  progress[value="100"]::-moz-progress-bar {
+  progress[value="10000"]::-moz-progress-bar {
     background: #f00;
   }
 
@@ -286,8 +301,7 @@ table {
   line-height: 18px;
   font-size: 10px;
   font-family: Montserrat !important ;
-  background: linear-gradient(244deg, #e4e7f6 0%, #e0eaf6 52%, #c3d9f6 100%) 0%
-    0% no-repeat padding-box;
+  background: linear-gradient(244deg, #e4e7f6 0%, #e0eaf6 52%, #c3d9f6 100%) 0% 0% no-repeat padding-box;
   border: 1px solid white;
   color: black;
 }
