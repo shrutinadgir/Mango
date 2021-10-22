@@ -79,7 +79,7 @@
                     max="10000"></progress>
                   {{project.Cost_currency/100}}%
                 </td>
-                <td data-valuetype="projStatus"><button
+                <td data-valuetype="projStatus"><button class="butpst"
                     [ngStyle]="{'background-color':project.status === 'in-progress' ? '#37D9BF' : project.status === 'on Hold' ? '#F9DA7C' : project.status === 'blocked' ? '#f78686' :'#97B5FA'}">
                     {{project.status}}</button></td>
                 <span><img class="moreicon" src="../../../assets/icon/more.svg"></span>
@@ -130,7 +130,12 @@
                 <td><img class="task-icons" src="../../../assets/icon/outlook.svg"></td>
                 <td><img class="task-icons" src="../../../assets/icon/teams.svg"></td>
                 <td>{{task.Task_Type}}</td>
-                <td>{{task.Task_Due_Dt | date : 'shortDate'}}</td>
+                <td>{{task.Task_Due_Dt | date : 'shortDate'}} <label>
+                    <input type="date">
+                    <button class="buticon" id="calendar_text">
+                      <img src="../../../assets/images/arrow.png">
+                    </button>
+                  </label></td>
                 <td><button class="task-status"
                     [ngStyle]="{'background-color':task.status === 'in-progress' ? '#37D9BF' : task.status === 'on Hold' ? '#F9DA7C' : '#97B5FA'}">
                     {{task.status}}</button>

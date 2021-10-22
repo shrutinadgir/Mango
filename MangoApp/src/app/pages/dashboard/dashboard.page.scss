@@ -218,7 +218,7 @@ table {
     background: #f00;
   }
 
-  button {
+  .butpst {
     width: 110%;
     border: none;
     color: black;
@@ -304,4 +304,34 @@ table {
   background: linear-gradient(244deg, #e4e7f6 0%, #e0eaf6 52%, #c3d9f6 100%) 0% 0% no-repeat padding-box;
   border: 1px solid white;
   color: black;
+}
+label {
+  display: inline-block;
+  position: relative;
+  line-height: 0;
+}
+input {
+  position: absolute;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  overflow: hidden;
+  cursor: pointer;
+}
+input::-webkit-calendar-picker-indicator {
+  position: absolute;
+  top: -150%;
+  left: -150%;
+  width: 300%;
+  height: 300%;
+  cursor: pointer;
+}
+input:hover + button {
+  background-color: none;
+}
+.buticon {
+  width: 22px;
+  height: 10px;
+  background: none;
 }
