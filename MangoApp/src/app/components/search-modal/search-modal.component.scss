@@ -99,3 +99,23 @@ ion-content {
     }
   }
 }
+.select-user-main {
+  padding: 4px;
+  margin-left: 22px;
+  h2 {
+    letter-spacing: 2px;
+    color: #4d4d4d;
+    opacity: 1;
+  }
+  .select-user {
+    height: 26px;
+    border-radius: 10px;
+    border: 1px solid #ffffff;
+    margin: 4px;
+    --background: #ebefff 0% 0% no-repeat padding-box;
+    letter-spacing: 0px;
+    color: #000000;
+    font-size: 12px;
+    font-family: Montserrat;
+  }
+}

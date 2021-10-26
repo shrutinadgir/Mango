@@ -15,7 +15,23 @@ ion-content {
     #e4e7f6
   );
 }
-
+ion-header {
+  background: linear-gradient(
+    to right,
+    #c3d9f6,
+    #c8dcf6,
+    #cee0f6,
+    #d3e3f6,
+    #d9e6f6,
+    #dce7f6,
+    #dee8f6,
+    #e1e9f6,
+    #e2e9f6,
+    #e2e8f6,
+    #e3e8f6,
+    #e4e7f6
+  );
+}
 ion-card {
   margin-top: 2%;
   opacity: 0.9;
@@ -105,7 +121,7 @@ table {
     position: relative;
     white-space: nowrap;
     overflow-x: scroll;
-    // width: 1%;
+    width: 100%;
   }
   .wrapper::-webkit-scrollbar {
     height: 8px; /* height of horizontal scrollbar ← You're missing this */
@@ -136,7 +152,7 @@ table {
   .sticky-col {
     position: -webkit-sticky;
     position: sticky;
-    background-color: #d3e8f7;
+    background-color: #d7ebfa;
   }
   .first-col {
     width: 100px;
@@ -152,7 +168,9 @@ table {
   }
   .task-status {
     width: 80px;
-    height: 26px;
+    height: 23px;
+    border-radius: 4px;
+    font-size: 11px;
   }
   .task-status-icon {
     margin-left: 8px;
@@ -166,7 +184,6 @@ table {
     font-weight: 600;
     font-size: 10px;
     border-bottom: 1px solid #d8dee0;
-    width: 1%;
   }
   progress {
     color: #50cad0;
@@ -194,16 +211,16 @@ table {
   }
 
   /* Chrome */
-  progress[value="100"]::-webkit-progress-value {
+  progress[value="10000"]::-webkit-progress-value {
     background: #f00;
   }
 
   /* Firefox */
-  progress[value="100"]::-moz-progress-bar {
+  progress[value="10000"]::-moz-progress-bar {
     background: #f00;
   }
 
-  button {
+  .butpst {
     width: 110%;
     border: none;
     color: black;
@@ -290,4 +307,37 @@ table {
     0% no-repeat padding-box;
   border: 1px solid white;
   color: black;
+}
+label {
+  display: inline-block;
+  position: relative;
+  line-height: 0;
+}
+input {
+  position: absolute;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  overflow: hidden;
+  cursor: pointer;
+}
+input::-webkit-calendar-picker-indicator {
+  position: absolute;
+  top: -150%;
+  left: -150%;
+  width: 300%;
+  height: 300%;
+  cursor: pointer;
+}
+input:hover + button {
+  background-color: none;
+}
+.buticon {
+  width: 22px;
+  height: 10px;
+  background: none;
+}
+.task-more-icon {
+  width: 25px;
 }

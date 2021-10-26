@@ -3,7 +3,7 @@ import { ModalController, PopoverController } from '@ionic/angular';
 import { AlertModalPage } from 'src/app/components/alert-modal/alert-modal.page';
 import { BackendCallService } from 'src/app/services/backend-call/backend-call.service';
 import { LoadingController } from '@ionic/angular';
-import { isEmptyArray, isNotEmptyArray, isNotNullAndUndefined, toNumber, } from 'src/app/utilities/utils';
+import { doubleDecimal, isEmptyArray, isNotEmptyArray, isNotNullAndUndefined, toNumber, } from 'src/app/utilities/utils';
 import { SortingPipe } from 'src/app/pipes/sorting.pipe';
 import { StatusPopoverComponent } from 'src/app/components/status-popover/status-popover.component';
 import { LocalSettingsService } from './../../services/local-settings/local-settings.service';
@@ -63,12 +63,12 @@ export class DashboardPage implements OnInit {
         const { projects } = data;
         if (isNotEmptyArray(projects)) {
           projects.forEach((_p) => {
-            // if (isNaN(_p.Cost_dollars))
-            //   _p.Cost_dollars = _self.convertStringToNum(_p.Cost_dollars);
-            // if (isNaN(_p.Revenue_dollars))
-            //   _p.Revenue_dollars = _self.convertStringToNum(_p.Revenue_dollars);
-            // if (isNaN(_p.Time_hours))
-            //   _p.Time_hours = _self.convertStringToNum(_p.Time_hours);
+            if (_p.Actual_Time_hours && _p.Planned_Time_Hours)
+              _p.timeHoursInPer = doubleDecimal(
+                toNumber(
+                  ((_p.Actual_Time_hours / _p.Planned_Time_Hours) * 100) / 10
+                )
+              );
           });
           return (_self.projectLists = projects);
         }
@@ -97,11 +97,17 @@ export class DashboardPage implements OnInit {
   //   return toNumber(num[0]);
   // }
 
-  sortData(data) {
+  sortData(data, widgetName?) {
     this.sorOrderStatus = !this.sorOrderStatus;
-    this.sorOrderStatus == true
-      ? this.sortPipe.transform(data, 'project_name', 'asc')
-      : this.sortPipe.transform(data, 'project_name', 'dsc');
+    if (widgetName === 'TaskManager') {
+      this.sorOrderStatus == true
+        ? this.sortPipe.transform(data, 'Task_Title', 'asc')
+        : this.sortPipe.transform(data, 'Task_Title', 'dsc');
+    } else {
+      this.sorOrderStatus == true
+        ? this.sortPipe.transform(data, 'project_name', 'asc')
+        : this.sortPipe.transform(data, 'project_name', 'dsc');
+    }
   }
 
   openDashboardCustomization(isDashboardCustomize) {
@@ -119,6 +125,7 @@ export class DashboardPage implements OnInit {
         ? 'mango-dashboard-customization-modal'
         : 'mango-alert-modal',
       backdropDismiss: false,
+      showBackdrop: false,
       componentProps: props,
     });
     await modal.present();
@@ -143,6 +150,7 @@ export class DashboardPage implements OnInit {
       translucent: true,
       componentProps: props,
       showBackdrop: false,
+      // mode: 'ios',
     });
     await popover.present();
     await popover.onDidDismiss().then((result) => {
