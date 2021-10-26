@@ -288,3 +288,11 @@ ion-checkbox {
   --checkmark-color: #083a81;
   --border-color-checked:#7D98BF;
 }
+
+.disabled-checkbox {
+  --border-color : #9B9B9B;
+  --background : #EBEFFF;
+  --background-checked:#EBEFFF;
+  --checkmark-color: #9B9B9B;
+  --border-color-checked:#9B9B9B;
+}

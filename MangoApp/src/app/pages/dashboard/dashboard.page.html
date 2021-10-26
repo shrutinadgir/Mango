@@ -23,7 +23,8 @@
         <ion-card-subtitle class="dash-cont-title">Project Status Tracker
           <span class="con-icons">
             <img src="../../../assets/images/Excel.png" class="con-icons-align">
-            <img src="../../../assets/images/Box.png" class="con-icons-align">
+            <img src="../../../assets/images/Box.png" class="con-icons-align"
+              (click)="addOrRemoveColumnSelectorWidgets('projectStatus')">
             <img src="../../../assets/images/Search.svg" class="con-icons-sea">
           </span>
         </ion-card-subtitle>
@@ -33,46 +34,55 @@
           <table class="table">
             <thead>
               <tr>
-                <th class="sticky-col first-col" style="margin-left: 5px;">Project ID</th>
-                <th>Customer Name <img (click)='sortData(projectLists)' src="/assets/images/Sorting.svg" /></th>
-                <th>Account Name</th>
-                <th>Project<br>Manager Name</th>
-                <th>Start Date</th>
-                <th>End Date</th>
-                <th>Number <br>of Machines</th>
-                <th>Regions</th>
-                <th>Time(in hours)<br>Actual vs Planned</th>
-                <th>Revenue(in $)<br>Actual vs Planned</th>
-                <th>Cost(in $)<br>Actual vs Planned</th>
-                <th>Status</th>
+                <th class="sticky-col first-col" style="margin-left: 5px;"
+                  *ngIf="projectTrackerColumnSelectorPermission.projectId">Project ID</th>
+                <th *ngIf="projectTrackerColumnSelectorPermission.customerName">Customer Name <img
+                    (click)='sortData(projectLists)' src="/assets/images/Sorting.svg" /></th>
+                <th *ngIf="projectTrackerColumnSelectorPermission.accountName">Account Name</th>
+                <th *ngIf="projectTrackerColumnSelectorPermission.projectManName">Project<br>Manager Name</th>
+                <th *ngIf="projectTrackerColumnSelectorPermission.startDate">Start Date</th>
+                <th *ngIf="projectTrackerColumnSelectorPermission.endDate">End Date</th>
+                <th *ngIf="projectTrackerColumnSelectorPermission.noOfMachine">Number <br>of Machines</th>
+                <th *ngIf="projectTrackerColumnSelectorPermission.regions">Regions</th>
+                <th *ngIf="projectTrackerColumnSelectorPermission.timeInHours">Time(in hours)<br>Actual vs Planned</th>
+                <th *ngIf="projectTrackerColumnSelectorPermission.revenueInDollar">Revenue(in $)<br>Actual vs Planned
+                </th>
+                <th *ngIf="projectTrackerColumnSelectorPermission.costInDollar">Cost(in $)<br>Actual vs Planned</th>
+                <th *ngIf="projectTrackerColumnSelectorPermission.projectPhase">Project Phase</th>
+                <th *ngIf="projectTrackerColumnSelectorPermission.status">Status</th>
                 <th></th>
               </tr>
             </thead>
             <tbody>
               <tr *ngFor="let project of projectLists">
-                <td class="sticky-col first-col" style="color: #083A81; font-weight: bold;cursor: pointer">
+                <td class="sticky-col first-col" style="color: #083A81; font-weight: bold;cursor: pointer"
+                  *ngIf="projectTrackerColumnSelectorPermission.projectId">
                   {{project.project_id}}</td>
-                <td>{{project.customer_name}}</td>
-                <td>{{project.Account_name}}</td>
-                <td>{{project.Project_managers_name}}</td>
-                <td>{{project.Start_dt | date : 'shortDate'}}</td>
-                <td>{{project.End_dt | date : 'shortDate'}}</td>
-                <td>{{project.Num_machines}}</td>
-                <td>{{project.Region}}</td>
-                <td style="position: relative;"><progress value={{project.Time_hours}} max="100"></progress> <label
-                    class="tooltip">
+                <td *ngIf="projectTrackerColumnSelectorPermission.customerName">{{project.customer_name}}</td>
+                <td *ngIf="projectTrackerColumnSelectorPermission.accountName">{{project.Account_name}}</td>
+                <td *ngIf="projectTrackerColumnSelectorPermission.projectManName">{{project.Project_managers_name}}</td>
+                <td *ngIf="projectTrackerColumnSelectorPermission.startDate">{{project.Start_dt | date : 'shortDate'}}
+                </td>
+                <td *ngIf="projectTrackerColumnSelectorPermission.endDate">{{project.End_dt | date : 'shortDate'}}</td>
+                <td *ngIf="projectTrackerColumnSelectorPermission.noOfMachine">{{project.Num_machines}}</td>
+                <td *ngIf="projectTrackerColumnSelectorPermission.regions">{{project.Region}}</td>
+                <td style="position: relative;" *ngIf="projectTrackerColumnSelectorPermission.timeInHours"><progress
+                    value={{project.Time_hours}} max="100"></progress> <label class="tooltip">
                     {{project.Time_hours}}% <input type="checkbox"><span>Time (in hours)<br>
                       Actual Value &#160;&#160;&#160;&#160;&#160;
                       {{project.Actual_Time_hours}}<br>
                       Planned Value &#160;&#160; {{project.Planned_Time_Hours}}
                     </span></label>
                 </td>
-                <td><progress id="file" value={{project.Revenue_currency}} max="10000"></progress>
+                <td *ngIf="projectTrackerColumnSelectorPermission.revenueInDollar"><progress id="file"
+                    value={{project.Revenue_currency}} max="10000"></progress>
                   {{project.Revenue_currency}}%</td>
-                <td><progress id="file" value={{project.Cost_currency}} max="10000"></progress>
+                <td *ngIf="projectTrackerColumnSelectorPermission.costInDollar"><progress id="file"
+                    value={{project.Cost_currency}} max="10000"></progress>
                   {{project.Cost_currency}}
                 </td>
-                <td><button
+                <td *ngIf="projectTrackerColumnSelectorPermission.projectPhase">{{project.project_phase}}</td>
+                <td *ngIf="projectTrackerColumnSelectorPermission.status"><button
                     [ngStyle]="{'background-color':project.status === 'in-progress' ? '#37D9BF' : project.status === 'on Hold' ? '#F9DA7C' : '#97B5FA'}">
                     {{project.status}}</button></td>
                 <span><img class="moreicon" src="../../../assets/icon/more.svg"></span>

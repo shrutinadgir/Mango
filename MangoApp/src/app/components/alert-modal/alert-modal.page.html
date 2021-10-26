@@ -1,20 +1,20 @@
 <ion-content [ngClass]="isDefaultAlert ? 'alert-class' : 'dashboard-customize'">
   <span *ngIf="isDefaultAlert && !isDashboardCustomize" class="alert-box">
-    <div class="close-icon" (click)="close()">
+    <div class="close-icon" (click)="close()" id="alert_modal_cancel_button">
       <img src="../../../assets/icon/cancel.svg">
     </div>
-    <div class="title" *ngIf="alertContent">
+    <div class="title" *ngIf="alertContent" id="alert_modal_content">
       <span>{{alertContent}}</span>
     </div>
     <div class="button-container" *ngIf="isDefaultAlert && !isDashboardCustomize">
-      <button (click)="confirm()">Confirm</button>
+      <button (click)="confirm()" id="alert_modal_confirm_button">Confirm</button>
     </div>
   </span>
 
   <div *ngIf="isDashboardCustomize && !isDefaultAlert" class="widget-container">
     <ion-grid>
       <ion-row class="close-row">
-        <ion-col (click)="close()" class="close-col">
+        <ion-col (click)="close()" class="close-col" id="dashboard_customization_alert_modal_cancel_button">
           <img src="../../../assets/icon/cancel.svg">
         </ion-col>
       </ion-row>
@@ -25,7 +25,8 @@
           </div>
         </ion-col>
         <ion-col>
-          <div class="ion-text-end header-reset" (click)="resetDashboard()">
+          <div class="ion-text-end header-reset" (click)="resetDashboard()"
+            id="dashboard_customization_alert_modal_reset_button">
             <img src="../../../assets/icon/reset.svg">
             <span class="header-reset-title">Reset Dashboard</span>
           </div>
@@ -37,7 +38,8 @@
           *ngFor="let item of dashboardCustomizationValue">
           <ion-row>
             <ion-col size-xs='1' size-md="1" style="padding-top: 40px;">
-              <ion-checkbox checked={{item.isChecked}} (ionChange)="changeWidgetCheckedValue(item)"></ion-checkbox>
+              <ion-checkbox checked={{item.isChecked}} (ionChange)="changeWidgetCheckedValue(item)"
+                id="dashboard_customization_alert_modal_checkbox_{{item.val}}"></ion-checkbox>
             </ion-col>
             <ion-col size-xs='11' size-md="11">
               <ion-card class="content-card-container">
@@ -45,7 +47,7 @@
                   <img src="{{item.icon}}">
                 </ion-badge>
                 <div class="content-card-title">
-                  <ion-label>{{item.title}}</ion-label>
+                  <ion-label id="dashboard_customization_alert_modal_title_{{item.val}}">{{item.title}}</ion-label>
                 </div>
               </ion-card>
             </ion-col>
@@ -53,7 +55,9 @@
         </ion-col>
       </ion-row>
       <ion-row class="button-row">
-        <button (click)="submitDashboardWidgets()" position="bottom">Submit</button>
+        <button (click)="submitDashboardWidgets()" position="bottom" [disabled]="!isAnyValueChanged"
+          id="dashboard_customization_alert_modal_submit_button"
+          [ngClass]="!isAnyValueChanged ? 'disable-button' : 'active-button'"> Submit</button>
       </ion-row>
     </ion-grid>
   </div>

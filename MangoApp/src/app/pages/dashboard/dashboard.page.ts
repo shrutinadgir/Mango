@@ -3,15 +3,11 @@ import { ModalController, PopoverController } from '@ionic/angular';
 import { AlertModalPage } from 'src/app/components/alert-modal/alert-modal.page';
 import { BackendCallService } from 'src/app/services/backend-call/backend-call.service';
 import { LoadingController } from '@ionic/angular';
-import {
-  isEmptyArray,
-  isNotEmptyArray,
-  isNotNullAndUndefined,
-  toNumber,
-} from 'src/app/utilities/utils';
+import { isEmptyArray, isNotEmptyArray, isNotNullAndUndefined, toNumber, } from 'src/app/utilities/utils';
 import { SortingPipe } from 'src/app/pipes/sorting.pipe';
 import { StatusPopoverComponent } from 'src/app/components/status-popover/status-popover.component';
 import { LocalSettingsService } from './../../services/local-settings/local-settings.service';
+import { AddRemoveColumnSelectorComponent } from 'src/app/components/add-remove-column-selector/add-remove-column-selector.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -24,6 +20,8 @@ export class DashboardPage implements OnInit {
   sorOrderStatus: boolean = false;
   tasksManagersData: Array<[]> = [];
   taskManagerUsers: any = [];
+  projectTrackerColumnSelectorPermission: any = {};
+  addRemoveColumnSelectorTypeFor = ["projectStatus"];
   isProjectTrackerWidgetPermission: boolean = true;
   isTaskManagerWidgetPermission: boolean = false;
   isFutureProjectsWidgetPermission: boolean = false;
@@ -38,7 +36,7 @@ export class DashboardPage implements OnInit {
     public sortPipe: SortingPipe,
     public popoverController: PopoverController,
     public localSettingsSrv: LocalSettingsService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.getProjects();
@@ -156,19 +154,59 @@ export class DashboardPage implements OnInit {
     });
   }
 
+  addOrRemoveColumnSelectorWidgets(type) {
+    this.openAddOrRemoveColumnSelectorAlertModal(type);
+  }
+
   getDashboardWidgetPermission() {
     const _self = this;
-    _self.isProjectTrackerWidgetPermission =
-      _self.localSettingsSrv.getProjectTrackerWidgetPermissionValue();
-    _self.isTaskManagerWidgetPermission =
-      _self.localSettingsSrv.getTaskManagerWidgetPermissionValue();
-    _self.isFutureProjectsWidgetPermission =
-      _self.localSettingsSrv.getFutureProjectsWidgetPermissionValue();
-    _self.isOfferManagementWidgetPermission =
-      _self.localSettingsSrv.getOfferManagementWidgetPermissionValue();
-    _self.isOrderManagementWidgetPermission =
-      _self.localSettingsSrv.getOrderManagementWidgetPermissionValue();
-    _self.isRiskAssesssmentWidgetPermission =
-      _self.localSettingsSrv.getRiskAssessmentWidgetPermissionValue();
+    _self.isProjectTrackerWidgetPermission = _self.localSettingsSrv.getProjectTrackerWidgetPermissionValue();
+    _self.isTaskManagerWidgetPermission = _self.localSettingsSrv.getTaskManagerWidgetPermissionValue();
+    _self.isFutureProjectsWidgetPermission = _self.localSettingsSrv.getFutureProjectsWidgetPermissionValue();
+    _self.isOfferManagementWidgetPermission = _self.localSettingsSrv.getOfferManagementWidgetPermissionValue();
+    _self.isOrderManagementWidgetPermission = _self.localSettingsSrv.getOrderManagementWidgetPermissionValue();
+    _self.isRiskAssesssmentWidgetPermission = _self.localSettingsSrv.getRiskAssessmentWidgetPermissionValue();
+    _self.getColumnSelectorPermission(_self.addRemoveColumnSelectorTypeFor);
+  }
+
+  async openAddOrRemoveColumnSelectorAlertModal(type) {
+    let props = { columnSelectorFor: type };
+    const modal = await this.modalController.create({
+      component: AddRemoveColumnSelectorComponent,
+      cssClass: 'add-remove-widget-class',
+      backdropDismiss: false,
+      showBackdrop: false,
+      componentProps: props,
+    });
+    await modal.present();
+    const { data: { columnSelectorSelectedValue: { isDataChangedForColumnSelector, columnSelectorWidgetFor } } } = await modal.onWillDismiss();
+    if (isDataChangedForColumnSelector && columnSelectorWidgetFor) this.getColumnSelectorPermission([columnSelectorWidgetFor])
+  }
+
+  getColumnSelectorPermission(types) {
+    const _self = this;
+    if (types.includes('projectStatus')) {
+      const data = _self.localSettingsSrv.getProjectStatusColumnSelectorWidgetStorageValue();
+      if (isNotEmptyArray(data)) _self.checkProjectTrackerColumnSelectorPermission(data);
+    }
+  }
+
+  checkProjectTrackerColumnSelectorPermission(value) {
+    const _self = this;
+    value.forEach(_v => {
+      if (_v.val === 'pid') _self.projectTrackerColumnSelectorPermission['projectId'] = _v.isChecked
+      if (_v.val === 'nom') _self.projectTrackerColumnSelectorPermission['noOfMachine'] = _v.isChecked
+      if (_v.val === 'cname') _self.projectTrackerColumnSelectorPermission['customerName'] = _v.isChecked
+      if (_v.val === 'tih') _self.projectTrackerColumnSelectorPermission['timeInHours'] = _v.isChecked
+      if (_v.val === 'aname') _self.projectTrackerColumnSelectorPermission['accountName'] = _v.isChecked
+      if (_v.val === 'cid') _self.projectTrackerColumnSelectorPermission['costInDollar'] = _v.isChecked
+      if (_v.val === 'pmname') _self.projectTrackerColumnSelectorPermission['projectManName'] = _v.isChecked
+      if (_v.val === 'rgns') _self.projectTrackerColumnSelectorPermission['regions'] = _v.isChecked
+      if (_v.val === 'pp') _self.projectTrackerColumnSelectorPermission['projectPhase'] = _v.isChecked
+      if (_v.val === 'rid') _self.projectTrackerColumnSelectorPermission['revenueInDollar'] = _v.isChecked
+      if (_v.val === 'std') _self.projectTrackerColumnSelectorPermission['startDate'] = _v.isChecked
+      if (_v.val === 'etd') _self.projectTrackerColumnSelectorPermission['endDate'] = _v.isChecked
+      if (_v.val === 'status') _self.projectTrackerColumnSelectorPermission['status'] = _v.isChecked
+    });
   }
 }

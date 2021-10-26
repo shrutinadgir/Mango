@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { projectStatusTrackerColumnSelectorData } from 'src/app/modals/add-remove-column-data';
 import { StorageService } from './../storage/storage.service';
 
 @Injectable({
@@ -12,6 +13,7 @@ export class LocalSettingsService {
   private OFFER_MANAGEMENT_KEY = 'offermanagement_widget';
   private ORDER_MANAGEMENT_KEY = 'ordermanagement_widget';
   private RISK_ASSESSMENT_KEY = 'riskassessment_widget';
+  private PROJECT_STATUS_COLUMN_SELECTOR_KEY = 'projectStatus_column_selector_widget'
 
   constructor(public storageSrv: StorageService) { }
 
@@ -77,5 +79,31 @@ export class LocalSettingsService {
     this.storageSrv.set(this.OFFER_MANAGEMENT_KEY, false);
     this.storageSrv.set(this.ORDER_MANAGEMENT_KEY, false);
     this.storageSrv.set(this.RISK_ASSESSMENT_KEY, false);
+  }
+
+  setColumnSelectorWidgetInfo(key, value) {
+    const uniqueKey = this.getColumnSelectorStorageKey(key);
+    this.storageSrv.set(uniqueKey, value);
+  }
+
+  getProjectStatusColumnSelectorWidgetStorageValue() {
+    let data = this.storageSrv.get(this.PROJECT_STATUS_COLUMN_SELECTOR_KEY);
+    if (data == null) {
+      const columnSelectorValue = JSON.parse(JSON.stringify(projectStatusTrackerColumnSelectorData))
+      data = columnSelectorValue
+    }
+    return data;
+  }
+
+  getColumnSelectorStorageKey(type) {
+    let key: string;
+    if (type === 'projectStatus') key = this.PROJECT_STATUS_COLUMN_SELECTOR_KEY;
+    return key;
+  }
+
+  resetColumnSelectorWidget(type) {
+    let key: string;
+    if (type === 'projectStatus') key = this.PROJECT_STATUS_COLUMN_SELECTOR_KEY;
+    this.storageSrv.remove(key);
   }
 }

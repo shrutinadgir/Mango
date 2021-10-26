@@ -1,0 +1,167 @@
+::ng-deep {
+    .add-remove-widget-class {
+      .modal-wrapper {
+        border-radius: 40px !important;
+        width: 1078px;
+        height: 556px;
+        border: 1px solid #ffffff;
+        background-color: #ffffff6b;
+        box-shadow: 0px 16px 20px #0000001A;
+      }
+    }
+}
+  ion-content {
+    --background: transparent;
+    --overflow: hidden;
+    --box-shadow: 0px 16px 20px #0000001a;
+    .widget-container {
+        ion-grid {
+            .close-row {
+                float: right;
+                padding: 27px;
+            }
+            .close-row:hover {
+                cursor: pointer;
+            }
+            .header-row {
+                padding-top: 40px;
+                .header-title {
+                    padding-left: 3px;
+                    margin-left: 30px;
+                    width: 382px;
+                    height: 32px;
+                    font-family: Montserrat;
+                    font-size: 26px;
+                    font-weight: 600;
+                    letter-spacing: 2.6px;
+                    color: #083A81;
+                    opacity: 1;
+                }
+                .header-reset {
+                    padding-top: 4px;
+                    margin-left: 30px;
+                }
+                .header-reset {
+                    cursor: pointer;
+                }
+                .header-reset-title {
+                    margin-left: 5px;
+                    width: 122px;
+                    height: 15px;
+                    font-family: Montserrat;
+                    font-size: 12px;
+                    font-weight: bold;
+                    letter-spacing: 1.2px;
+                    color: #000000;
+                    opacity: 1;
+                    width: 144px;
+                }
+            }
+            .header-sub {
+                width: 460px;
+                height: 15px;
+                margin-left: 30px;
+                padding-top: 25px;
+                .header-sub-title {
+                    font: normal normal bold 12px/12px Montserrat;
+                    letter-spacing: 1.2px;
+                    color: #454B57;
+                    opacity: 1;
+                }
+                
+            }
+            .content-row {
+                margin-left: 30px;
+                padding-top: 36px;
+                .col-inner-container {
+                    margin-bottom: 14px;
+                    .col-checkbox {
+                        margin-left: -10px;
+                    }
+                    .content-card-title {
+                        font-size: 12px;
+                        font-family: Montserrat;
+                        letter-spacing: 1.2px;
+                        color: #000000;
+                        opacity: 1;
+                        top: -15%;
+                        position: relative;
+                    }
+                    .disabled-class-title {
+                        color: #9B9B9B;
+                    }
+                }   
+            }
+            .button-row {
+                position: absolute;
+                right: 0;
+                bottom: 0;
+                padding: 27px;
+                button {
+                    font-family: Montserrat;
+                    font-weight: 600;
+                    border-radius: 15px;
+                    opacity: 1;
+                    color: white;
+                    width: 140px;
+                    height: 44px;
+                    margin-left: 10px;
+                    font-size: 14px;
+                    letter-spacing: 0px;
+                }
+                .disable-button{
+                    background: #7C7C7CB3 0% 0% no-repeat padding-box;
+                }
+                .active-button {
+                    background: transparent linear-gradient(248deg, #00A4E0 0%, #083A81 100%) 0% 0% no-repeat padding-box;
+                }
+            }
+        }
+    }
+    .alert-box {
+        .close-icon {
+            float: right;
+            position: relative;
+            right: 6%;
+            padding-top: 6%;
+            width: 24px;
+            height: 24px;
+        }
+        .close-icon:hover {
+            cursor: pointer;
+        }
+        .title {
+            width: auto;
+            height: 100%;
+            text-align: center;
+            font-family: Montserrat;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            color: #083A81;
+            opacity: 1;
+            display: flex;
+            justify-content: center;
+            align-content: center;
+            align-items: center;
+        }
+        .button-container {
+            position:absolute;
+            bottom: 10%;
+            right: 6%;
+            button {
+                font-family: Montserrat;
+                font-weight: 600;
+                background: transparent linear-gradient(248deg, #00A4E0 0%, #083A81 100%) 0% 0% no-repeat padding-box;
+                border-radius: 15px;
+                opacity: 1;
+                color: white;
+                width: 140px;
+                height: 44px;
+                margin-left: 10px;
+                font-size: 14px;
+                letter-spacing: 0px;
+            }
+        }
+    }
+  }
+  

@@ -10,6 +10,7 @@ import { LocalSettingsService } from '../../services/local-settings/local-settin
 })
 export class AlertModalPage implements OnInit {
   isDefaultAlert: boolean = true;
+  isAnyValueChanged: boolean = false;
   @Input() alertContent: string;
   @Input() isDashboardCustomize: boolean = false;
   shouldResetDashboard: boolean = false;
@@ -21,12 +22,12 @@ export class AlertModalPage implements OnInit {
     if (this.isDashboardCustomize) {
       this.isDefaultAlert = false;
       this.dashboardCustomizationValue = [
-        { title: 'Project Tracker', val: 'pt', isChecked: true, icon: '../../../assets/icon/project-widget.svg' },
-        { title: 'Task Manager', val: 'tm', isChecked: false, icon: '../../../assets/icon/task-widget.svg' },
-        { title: 'Future Projects', val: 'fp', isChecked: false, icon: '../../../assets/icon/future-widget.svg' },
-        { title: 'Offer Management', val: 'ofm', isChecked: false, icon: '../../../assets/icon/project-widget.svg' },
-        { title: 'Order Management', val: 'om', isChecked: false, icon: '../../../assets/icon/project-widget.svg' },
-        { title: 'Risk Assessment', val: 'rm', isChecked: false, icon: '../../../assets/icon/project-widget.svg' }
+        { title: 'Project Tracker', val: 'pt', isChecked: true, icon: '../../../assets/icon/Project_Tracker_Widget.svg' },
+        { title: 'Task Manager', val: 'tm', isChecked: false, icon: '../../../assets/icon/Task_Manager_Widget.svg' },
+        { title: 'Future Projects', val: 'fp', isChecked: false, icon: '../../../assets/icon/Future_Projects_Widget.svg' },
+        { title: 'Offer Management', val: 'ofm', isChecked: false, icon: '../../../assets/icon/Offer_Management_Widget.svg' },
+        { title: 'Order Management', val: 'om', isChecked: false, icon: '../../../assets/icon/Order_Management_Widget.svg' },
+        { title: 'Risk Assessment', val: 'rm', isChecked: false, icon: '../../../assets/icon/project-widget-old.svg' }
       ];
       this.changeWidgetSelectedValue();
     }
@@ -81,7 +82,7 @@ export class AlertModalPage implements OnInit {
         else {
           let data = _self.localSettingsSrv.getDashboardCustomizationChoice(val);
           if (val == 'pt' && data == null) _widget.isChecked = true;
-          else _widget.isChecked = data;
+          else _widget.isChecked = data ? data : false;
         }
       })
     }
@@ -89,6 +90,7 @@ export class AlertModalPage implements OnInit {
 
   changeWidgetCheckedValue(item) {
     const _self = this;
+    _self.isAnyValueChanged = true;
     if (isNotEmptyArray(_self.dashboardCustomizationValue)) {
       let matchedVal = _self.dashboardCustomizationValue.find(_p => _p.val === item.val);
       if (matchedVal) matchedVal.isChecked = !matchedVal.isChecked;

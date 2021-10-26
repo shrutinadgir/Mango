@@ -153,7 +153,6 @@ ion-content {
                 button {
                     font-family: Montserrat;
                     font-weight: 600;
-                    background: transparent linear-gradient(248deg, #00A4E0 0%, var(--unnamed-color-083a81) 100%) 0% 0% no-repeat padding-box;
                     background: transparent linear-gradient(248deg, #00A4E0 0%, #083A81 100%) 0% 0% no-repeat padding-box;
                     border-radius: 15px;
                     opacity: 1;
@@ -163,6 +162,12 @@ ion-content {
                     margin-left: 10px;
                     font-size: 14px;
                     letter-spacing: 0px;
+                }
+                .disable-button{
+                    background: #7C7C7CB3 0% 0% no-repeat padding-box;
+                }
+                .active-button {
+                    background: transparent linear-gradient(248deg, #00A4E0 0%, #083A81 100%) 0% 0% no-repeat padding-box;
                 }
             }
         }
